@@ -1,8 +1,8 @@
 const icons = Object.freeze({
 	drawer: `<svg
 						xmlns="http://www.w3.org/2000/svg"
-						width="18"
-						height="18"
+						width="26"
+						height="26"
 						fill="currentColor"
 						class="bi bi-list"
 						viewBox="0 0 16 16"
