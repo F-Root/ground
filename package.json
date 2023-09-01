@@ -1,13 +1,21 @@
 {
-  "name": "ground",
-  "version": "1.0.0",
-  "description": "ground",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "root",
-  "license": "ISC"
+	"name": "ground",
+	"version": "1.0.0",
+	"description": "ground",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"start": "node index.js",
+		"dev": "nodemon index.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "root",
+	"license": "ISC",
+	"dependencies": {
+		"express": "^4.18.2"
+	},
+	"devDependencies": {
+		"eslint": "^8.2.0",
+		"nodemon": "^2.0.22"
+	}
 }
