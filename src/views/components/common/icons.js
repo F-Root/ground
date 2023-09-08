@@ -1,5 +1,5 @@
 const icons = Object.freeze({
-	drawer: `<svg
+  drawer: `<svg
 						xmlns="http://www.w3.org/2000/svg"
 						width="26"
 						height="26"
@@ -12,7 +12,7 @@ const icons = Object.freeze({
 							d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
 						/>
 					</svg>`,
-	search: `<svg
+  search: `<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="18"
 							height="18"
@@ -24,7 +24,7 @@ const icons = Object.freeze({
 								d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
 							/>
 						</svg>`,
-	favicon: `<svg
+  favicon: `<svg
 						version="1.0"
 						xmlns="http://www.w3.org/2000/svg"
 						width="30"
@@ -74,7 +74,7 @@ c-3 -33 -5 -117 -4 -187 0 -101 4 -131 17 -152 29 -44 89 -47 138 -7 23 19 24
 							/>
 						</g>
 					</svg>`,
-	github: `<svg
+  github: `<svg
 						version="1.0"
 						xmlns="http://www.w3.org/2000/svg"
 						width="30"

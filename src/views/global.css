@@ -1,36 +1,36 @@
 :root {
-	--color-bg-navbar: #3d414d;
-	--color-bg-body: #eeeeee;
-	--color-bg-main: #ffffff;
-	--color-text-navbar: #eeeeee;
+  --color-bg-navbar: #3d414d;
+  --color-bg-body: #eeeeee;
+  --color-bg-main: #ffffff;
+  --color-text-navbar: #eeeeee;
 }
 
 * {
-	box-sizing: border-box;
-	font-family: 'Noto Sans KR', sans-serif;
+  box-sizing: border-box;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 html,
 body {
-	padding: 0;
-	margin: 0;
-	background-color: var(--color-bg-body);
+  padding: 0;
+  margin: 0;
+  background-color: var(--color-bg-body);
 }
 
 a {
-	color: inherit;
-	text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 ul,
 ol {
-	display: flex;
-	list-style: none;
-	padding: 0;
-	margin: 0;
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 input {
-	border: none;
-	outline: none;
+  border: none;
+  outline: none;
 }
