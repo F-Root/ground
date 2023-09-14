@@ -1,40 +1,83 @@
 const icons = Object.freeze({
-  drawer: `<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="26"
-						height="26"
-						fill="currentColor"
-						class="bi bi-list"
-						viewBox="0 0 16 16"
-					>
-						<path
-							fill-rule="evenodd"
-							d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
-						/>
-					</svg>`,
-  search: `<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="18"
-							height="18"
-							fill="currentColor"
-							class="bi bi-search"
-							viewBox="0 0 16 16"
-						>
-							<path
-								d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
-							/>
-						</svg>`,
-  favicon: `<svg
-						version="1.0"
-						xmlns="http://www.w3.org/2000/svg"
-						width="30"
-						height="30"
-						viewBox="0 0 500.000000 500.000000"
-						preserveAspectRatio="xMidYMid meet"
-					>
-						<g transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
-							<path
-								d="M2320 4994 c-19 -2 -78 -9 -130 -15 -886 -101 -1680 -716 -2014
+  user: /* HTML */ `<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    fill="currentColor"
+    class="bi bi-person-circle"
+    viewBox="0 0 16 16"
+  >
+    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+    <path
+      fill-rule="evenodd"
+      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+    />
+  </svg>`,
+  drawer: /* HTML */ `<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="30"
+    height="30"
+    fill="currentColor"
+    class="bi bi-list"
+    viewBox="0 0 16 16"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+    />
+  </svg>`,
+  close: /* HTML */ `<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="26"
+    height="26"
+    fill="currentColor"
+    class="bi bi-x-lg"
+    viewBox="0 0 16 16"
+  >
+    <path
+      d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+    />
+  </svg>`,
+  search: /* HTML */ `<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    fill="currentColor"
+    class="bi bi-search"
+    viewBox="0 0 16 16"
+  >
+    <path
+      d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+    />
+  </svg>`,
+  underArrow: /* HTML */ `<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    fill="currentColor"
+    class="bi bi-arrow-down-square"
+    viewBox="0 0 16 16"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm8.5 2.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"
+    />
+  </svg>`,
+  favicon: /* HTML */ `<svg
+    version="1.0"
+    xmlns="http://www.w3.org/2000/svg"
+    width="30"
+    height="30"
+    viewBox="0 0 500.000000 500.000000"
+    preserveAspectRatio="xMidYMid meet"
+  >
+    <g
+      transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)"
+      fill="currentColor"
+      stroke="none"
+    >
+      <path
+        d="M2320 4994 c-19 -2 -78 -9 -130 -15 -886 -101 -1680 -716 -2014
 -1559 -120 -304 -171 -578 -171 -920 0 -353 54 -632 181 -945 127 -309 305
 -576 549 -821 398 -399 878 -634 1460 -716 119 -17 504 -16 620 1 292 43 549
 121 790 241 758 376 1258 1077 1376 1930 18 125 18 507 0 625 -84 575 -320
@@ -63,28 +106,32 @@ c-3 -33 -5 -117 -4 -187 0 -101 4 -131 17 -152 29 -44 89 -47 138 -7 23 19 24
 24 29 213 l5 193 120 0 120 0 -2 -305 c-1 -168 -3 -308 -3 -312 0 -5 -51 -8
 -114 -8 l-114 0 -6 44 -7 44 -70 -41 c-148 -85 -296 -47 -334 87 -21 75 -28
 237 -16 354 16 148 10 143 139 140 l107 -3 -5 -60z"
-							/>
-							<path
-								d="M4269 2475 c-37 -20 -63 -84 -56 -137 7 -55 61 -108 108 -108 67 0
+      />
+      <path
+        d="M4269 2475 c-37 -20 -63 -84 -56 -137 7 -55 61 -108 108 -108 67 0
 119 57 119 130 0 97 -91 159 -171 115z"
-							/>
-							<path
-								d="M2018 2474 c-83 -44 -75 -198 12 -234 76 -31 150 27 150 119 0 101
+      />
+      <path
+        d="M2018 2474 c-83 -44 -75 -198 12 -234 76 -31 150 27 150 119 0 101
 -81 159 -162 115z"
-							/>
-						</g>
-					</svg>`,
-  github: `<svg
-						version="1.0"
-						xmlns="http://www.w3.org/2000/svg"
-						width="30"
-						height="30"
-						viewBox="0 0 240.000000 240.000000"
-						preserveAspectRatio="xMidYMid meet"
-					>
-						<g transform="translate(0.000000,240.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
-							<path
-								d="M970 2301 c-305 -68 -555 -237 -727 -493 -301 -451 -241 -1056 143
+      />
+    </g>
+  </svg>`,
+  github: /* HTML */ `<svg
+    version="1.0"
+    xmlns="http://www.w3.org/2000/svg"
+    width="30"
+    height="30"
+    viewBox="0 0 240.000000 240.000000"
+    preserveAspectRatio="xMidYMid meet"
+  >
+    <g
+      transform="translate(0.000000,240.000000) scale(0.100000,-0.100000)"
+      fill="#000000"
+      stroke="none"
+    >
+      <path
+        d="M970 2301 c-305 -68 -555 -237 -727 -493 -301 -451 -241 -1056 143
 -1442 115 -116 290 -228 422 -271 49 -16 55 -16 77 -1 24 16 25 20 25 135 l0
 118 -88 -5 c-103 -5 -183 13 -231 54 -17 14 -50 62 -73 106 -38 74 -66 108
 -144 177 -26 23 -27 24 -9 37 43 32 130 1 185 -65 96 -117 133 -148 188 -160
@@ -96,9 +143,9 @@ c-3 -33 -5 -117 -4 -187 0 -101 4 -131 17 -152 29 -44 89 -47 138 -7 23 19 24
 -129 -193 -219 -369 -252 l-84 -16 31 -55 32 -56 3 -223 4 -223 25 -16 c23
 -15 28 -15 76 2 80 27 217 101 292 158 446 334 590 933 343 1431 -145 293
 -419 518 -733 602 -137 36 -395 44 -525 15z"
-							/>
-						</g></svg
-				>`,
+      />
+    </g>
+  </svg>`,
 });
 
 export { icons };

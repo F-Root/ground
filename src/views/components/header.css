@@ -1,13 +1,14 @@
 .navbar-wrapper {
   --height-navbar: 60px;
-  --margin-right: 20px;
-  --margin-left: 15px;
+  --margin: 20px;
+  --padding: 15px;
 
   background-color: var(--color-bg-navbar);
   color: var(--color-text-navbar);
   font-size: 20px;
 }
 
+/* navigation bar */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -19,61 +20,105 @@
   height: var(--height-navbar);
 }
 
+/* 반응형 ui navigation drawer */
 .nav-drawer {
   display: none;
 }
 
+/* drawer 나오게 하는 button */
 .nav-drawer-button {
   background: none;
   border: none;
   padding: 0;
+  margin-left: var(--margin);
   color: inherit;
   cursor: pointer;
-  display: flex;
-  align-items: center;
 }
 
+/* drawer button을 클릭하면 나오는 drawer menu */
 .nav-drawer-menu {
-  position: absolute;
-  z-index: 1;
-  width: 270px;
-  background-color: wheat;
-  height: 100%;
+  display: none;
+  /* position: absolute;
+  z-index: 1; */
+  width: 100vw;
+  background-color: var(--color-bg-nav-drawer);
+}
+
+.nav-drawer-menu > ul {
+  flex-direction: column;
+}
+
+.nav-drawer-menu-categories {
+  padding: var(--padding);
+}
+
+.nav-drawer-menu-categories:hover {
+  background-color: var(--color-bg-hover);
+  cursor: pointer;
+}
+
+.nav-drawer-menu-icons {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: calc(var(--padding) - 5px);
+}
+
+.nav-drawer-menu-icon {
+  cursor: pointer;
 }
 
 .nav-home {
-  margin-right: var(--margin-right);
+  margin-right: var(--margin);
   height: calc(var(--height-navbar) / 2);
-}
-
-.nav-logo {
-  width: 35px;
-  height: 35px;
 }
 
 .navbar-nav {
   flex: 1 1 0;
 }
 
-.nav-item {
-  margin-right: var(--margin-right);
+.nav-main-item {
+  margin-right: var(--margin);
+}
+
+.nav-side-item {
+  margin-left: var(--margin);
+  cursor: pointer;
+}
+
+.nav-side-item:nth-child(2) {
+  display: none;
 }
 
 .navbar-search {
-  display: flex;
-  margin-right: var(--margin-left);
+  background-color: white;
+  padding: calc(var(--padding) - 10px) calc(var(--padding) - 7px);
+  border-radius: 5px;
 }
 
 .navbar-search-icon {
-  padding: 0 10px;
+  color: var(--color-bg-navbar);
+  padding-left: calc(var(--padding) - 5px);
 }
 
-.navbar-nav-info {
-  flex-direction: row-reverse;
+.navbar-search-modal {
+  display: none;
+  padding: calc(var(--padding) - 5px);
 }
 
-.nav-info-item {
-  margin-left: var(--margin-right);
+.navbar-search-modal > input {
+  width: 100vw;
+  border-radius: 5px;
+  padding: calc(var(--padding) - 10px);
+}
+
+.navbar-search-modal > span {
+  color: var(--color-text-navbar);
+}
+
+.flex-align-center {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -81,12 +126,14 @@
     flex: 1 1 0;
   }
 
-  .nav-drawer {
+  .nav-drawer,
+  .nav-side-item:nth-child(2) {
     display: flex;
   }
 
   .navbar-nav,
-  .navbar-nav-info {
+  .nav-side-item:nth-child(1),
+  .nav-side-item:nth-child(3) {
     display: none;
   }
 }
