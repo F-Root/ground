@@ -1,4 +1,8 @@
 .navbar-wrapper {
+  --color-bg-navbar: #3d414d;
+  --color-text-navbar: #eeeeee;
+  --color-bg-nav-drawer: #4c5161;
+  --color-bg-nav-hover: #adb1ba;
   --height-navbar: 60px;
   --margin: 20px;
   --padding: 15px;
@@ -53,7 +57,7 @@
 }
 
 .nav-drawer-menu-categories:hover {
-  background-color: var(--color-bg-hover);
+  background-color: var(--color-bg-nav-hover);
   cursor: pointer;
 }
 

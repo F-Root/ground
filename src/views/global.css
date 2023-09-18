@@ -1,10 +1,6 @@
 :root {
   --color-bg-body: #eeeeee;
   --color-bg-main: #ffffff;
-  --color-bg-hover: #adb1ba;
-  --color-bg-navbar: #3d414d;
-  --color-bg-nav-drawer: #4c5161;
-  --color-text-navbar: #eeeeee;
 }
 
 * {
