@@ -1,0 +1,53 @@
+.contents-wrapper {
+  --height-navbar: 60px;
+  --margin: 20px;
+  --padding: 15px;
+
+  background-color: inherit;
+}
+
+.contents {
+  margin: 0 auto;
+  display: grid;
+  max-width: 1200px;
+  height: 800px;
+  grid-template-columns: 1fr 320px;
+}
+
+.contents-article {
+  margin-right: 10px;
+  height: inherit;
+}
+
+.contents-article-board {
+  background-color: #ffffff;
+  border-width: 0 1px;
+  border-style: solid;
+  border-color: gray;
+  height: inherit;
+}
+
+.contents-aside {
+  padding: 10px 10px 0 0;
+}
+
+.contents-aside-popular {
+  display: flex;
+  flex-direction: column;
+  width: inherit;
+  height: 300px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.contents-aside-news {
+  display: flex;
+  flex-direction: column;
+  width: inherit;
+  height: 450px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
