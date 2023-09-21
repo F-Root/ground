@@ -1,0 +1,83 @@
+.content-wrapper {
+  --height-navbar: 60px;
+  --margin: 20px;
+  --padding: 15px;
+  --color-bg-content: #ffffff;
+  --font-size: 10px;
+
+  background-color: inherit;
+}
+
+.content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.content {
+  background-color: var(--color-bg-content);
+  border: 1px solid gray;
+  border-radius: 5px;
+  width: 60vw;
+  height: 60vh;
+  max-width: 900px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ground_logo {
+  cursor: pointer;
+}
+
+.sign-in-form {
+  margin-top: 30px;
+}
+
+.sign-in-form > button {
+  border: 1px solid gray;
+  border-radius: 5px;
+  width: 300px;
+  height: 50px;
+  margin-top: 5px;
+  padding-bottom: 3px;
+  font-size: calc(var(--font-size) + 5px);
+  cursor: pointer;
+}
+
+.sign-in-input {
+  display: flex;
+  align-items: center;
+}
+
+.sign-in-input > input {
+  border: 1px solid gray;
+  padding: var(--padding);
+  width: 300px;
+}
+
+.sign-in-input:nth-child(1) > input {
+  border-radius: 5px 5px 0 0;
+}
+
+.sign-in-input:nth-child(2) > input {
+  border-radius: 0 0 5px 5px;
+  margin-top: -1px;
+}
+
+.other-links {
+  display: flex;
+  justify-content: space-around;
+
+  margin-top: 15px;
+  width: 300px;
+  font-size: calc(var(--font-size) + 2px);
+}
+
+.find-pw,
+.sign-up {
+  cursor: pointer;
+}

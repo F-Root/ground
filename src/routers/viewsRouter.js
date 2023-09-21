@@ -10,6 +10,7 @@ const serveStatic = (resource) => {
   return express.static(resourcePath, option);
 };
 
-viewsRouter.use('/', serveStatic('index'));
+viewsRouter.use('/', serveStatic('main'));
+viewsRouter.use('/signIn', serveStatic('signIn'));
 
 export { viewsRouter };
