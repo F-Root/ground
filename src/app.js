@@ -1,8 +1,12 @@
 import express from 'express';
-import { viewsRouter } from './routers/viewsRouter.js';
+import * as Routers from './routers/index.js';
 
 const app = express();
 
-app.use(viewsRouter);
+//view
+app.use(Routers.viewsRouter);
+
+//api routing
+app.use('/api', Routers.userRouter);
 
 export { app };
