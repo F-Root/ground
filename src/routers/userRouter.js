@@ -3,7 +3,24 @@ import { userService } from '../services/index.js';
 
 const userRouter = Router();
 
-userRouter.post('/signIn', async () => {});
+userRouter.post('/signIn', async (req, res, next) => {
+  const { email, password } = req.body;
+
+  try {
+    const userToken = await userService.getUserToken({ email, password });
+
+    res.cookie('userInfo', userToken, {
+      expires: new Date(Date.now() + 60000 * 1440), //24시간
+      httpOnly: true,
+      signed: true,
+    });
+
+    res.status(200).json({ signIn: 'succeed' });
+  } catch (error) {
+    next(error);
+  }
+});
+
 userRouter.post('/signUp', async (req, res, next) => {
   const { email, password, name } = req.body;
 
@@ -19,6 +36,7 @@ userRouter.post('/signUp', async (req, res, next) => {
     next(error);
   }
 });
+
 userRouter.put('/update', async () => {});
 userRouter.delete('/', async () => {});
 
