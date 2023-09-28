@@ -12,5 +12,6 @@ const serveStatic = (resource) => {
 
 viewsRouter.use('/', serveStatic('main'));
 viewsRouter.use('/signIn', serveStatic('signIn'));
+viewsRouter.use('/signUp', serveStatic('signUp'));
 
 export { viewsRouter };
