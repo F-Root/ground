@@ -10,7 +10,7 @@ userRouter.post('/signIn', async (req, res, next) => {
     const userToken = await userService.getUserToken({ email, password });
 
     res.cookie('userInfo', userToken, {
-      expires: new Date(Date.now() + 60000 * 1440), //24시간
+      expires: new Date(Date.now() + 1000 * 60 * 60 * 24), //24시간
       httpOnly: true,
       signed: true,
     });
