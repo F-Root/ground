@@ -4,7 +4,7 @@ const DB_URL =
   process.env.MONGODB_URL ||
   'MongoDB 서버 주소가 설정되지 않았습니다.\n1)./db/index.js 파일 확인\n2).env 파일 세팅 확인\n';
 
-mongoose.connect(DB_URL);
+mongoose.connect(DB_URL, { dbName: 'ground' });
 const db = mongoose.connection;
 
 db.on('connected', () =>
