@@ -22,13 +22,13 @@ userRouter.post('/signIn', async (req, res, next) => {
 });
 
 userRouter.post('/signUp', async (req, res, next) => {
-  const { email, password, name } = req.body;
+  const { email, password, nickname } = req.body;
 
   try {
     await userService.addUser({
       email,
       password,
-      name,
+      nickname,
     });
 
     res.status(201).json({ sighUp: 'succeed' });
