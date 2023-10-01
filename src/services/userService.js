@@ -31,6 +31,7 @@ class UserService {
 
     return;
   }
+
   async getUserToken(signInfo) {
     const { email, password } = signInfo;
     const user = await this.userModel.findByEmail(email);

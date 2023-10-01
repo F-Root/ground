@@ -1,33 +1,30 @@
 import jwt from 'jsonwebtoken';
 
-const secretKey = process.env.JWT_SECRET_KEY || 'secret-key';
+const accessKey = process.env.ACCESS_SECRET_KEY;
+const refreshKey = process.env.REFRESH_SECRET_KEY;
 
 export const jwtUtil = {
   generateAccessToken: (user) => {
     const payload = { userId: user.userId, role: user.role };
 
-    return jwt.sign(payload, secretKey, {
-      algorithm: 'HS512',
-      expiresIn: '7d',
+    return jwt.sign(payload, accessKey, {
+      algorithm: 'HS384',
+      expiresIn: '1h',
     });
   },
 
   generateRefreshToken: (user) => {
     const payload = { userId: user.userId };
 
-    return jwt.sign(payload, secretKey, {
+    return jwt.sign(payload, refreshKey, {
       algorithm: 'HS512',
-      expiresIn: '30d',
+      expiresIn: '14d',
     });
-  },
-
-  decodedToken: (token) => {
-    return jwt.decode(token);
   },
 
   verifyAccess: (access) => {
     try {
-      const accessDecoded = jwt.verify(access, secretKey);
+      const accessDecoded = jwt.verify(access, accessKey);
       return {
         userId: accessDecoded.userId,
         role: accessDecoded.role,
@@ -43,7 +40,7 @@ export const jwtUtil = {
 
   verifyRefresh: (refresh) => {
     try {
-      const refreshDecoded = jwt.verify(refresh, secretKey);
+      const refreshDecoded = jwt.verify(refresh, refreshKey);
       return {
         userId: refreshDecoded.userId,
       };
@@ -54,5 +51,9 @@ export const jwtUtil = {
         throw new Error('INVALID_REFRESH_TOKEN_ERROR');
       }
     }
+  },
+
+  decodedToken: (token) => {
+    return jwt.decode(token);
   },
 };

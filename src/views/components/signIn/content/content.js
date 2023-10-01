@@ -13,19 +13,32 @@ export default class Content extends Component {
     this.addEvent('click', '.ground_logo', () => {
       location.href = '/';
     });
-    this.addEvent('click', '.sign-in-form > button', (event) => {
-      event.preventDefault();
-      const formData = new FormData(document.querySelector('.sign-in-form'));
-      const signInData = {};
-
-      for (const pair of formData.entries()) {
-        signInData[pair[0]] = pair[1];
-      }
-
-      api.post('/signIn', Object.freeze(signInData));
-    });
+    this.addEvent('click', '.sign-in-form > button', handleSubmit);
   }
 }
+
+/* Functions */
+
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  const formData = new FormData(document.querySelector('.sign-in-form'));
+  const signInData = {};
+
+  for (const pair of formData.entries()) {
+    signInData[pair[0]] = pair[1];
+  }
+
+  try {
+    await api.post('/signIn', Object.freeze(signInData));
+    alert('로그인 성공');
+    location.href = '/';
+  } catch (error) {
+    console.error(error.stack);
+    alert('에러발생');
+  }
+};
+
+/* HTML FORMS */
 
 const content = () => {
   return /* HTML */ `<div class="content">
