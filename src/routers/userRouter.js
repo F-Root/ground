@@ -25,13 +25,25 @@ userRouter.post('/signUp', async (req, res, next) => {
   const { email, password, nickname } = req.body;
 
   try {
-    await userService.addUser({
+    const nick = await userService.addUser({
       email,
       password,
       nickname,
     });
 
-    res.status(201).json({ sighUp: 'succeed' });
+    res.status(201).json({ nick });
+  } catch (error) {
+    next(error);
+  }
+});
+
+userRouter.get('/signUp/available', async (req, res, next) => {
+  const email = req.query.email;
+
+  try {
+    const available = await userService.checkEmailDuplicate(email);
+
+    res.status(200).json({ available });
   } catch (error) {
     next(error);
   }
