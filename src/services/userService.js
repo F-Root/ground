@@ -29,7 +29,7 @@ class UserService {
       throw new Error('회원가입에 실패하였습니다.');
     }
 
-    return;
+    return createdNewUser.nickname;
   }
 
   async getUserToken(signInfo) {
@@ -64,6 +64,15 @@ class UserService {
     });
 
     return { accessToken, refreshToken };
+  }
+
+  async checkEmailDuplicate(email) {
+    const user = await this.userModel.findByEmail(email);
+
+    if (user) {
+      return false;
+    }
+    return true;
   }
 }
 

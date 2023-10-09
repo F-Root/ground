@@ -4,6 +4,7 @@
   --padding: 15px;
   --color-bg-content: #ffffff;
   --font-size: 10px;
+  --nickname-color: #349fd9;
 
   background-color: inherit;
 }
@@ -19,9 +20,10 @@
   background-color: var(--color-bg-content);
   border: 1px solid gray;
   border-radius: 5px;
-  width: 60vw;
-  height: 60vh;
+  width: 70vw;
+  height: 80vh;
   max-width: 900px;
+  min-width: 500px;
 
   display: flex;
   flex-direction: column;
@@ -35,6 +37,10 @@
 
 .sign-up-container {
   margin-top: 30px;
+}
+
+.sign-up-container > h3 {
+  margin: 0 0 20px 3px;
 }
 
 .sign-up-form > button {
@@ -70,4 +76,81 @@
 .sign-up-input:nth-child(3) > input {
   border-radius: 0 0 5px 5px;
   margin-top: -1px;
+}
+
+.sign-up-input:nth-child(1) > input:focus,
+.sign-up-input:nth-child(2) > input:focus,
+.sign-up-input:nth-child(3) > input:focus {
+  border-width: 2px;
+}
+
+.sign-up-error-text {
+  margin: 0 0 20px 3px;
+  color: red;
+  font-size: 8px;
+}
+
+.social-sign-up {
+  margin-top: 25px;
+}
+
+.social-sign-up > h3 {
+  margin: 0 0 20px 3px;
+}
+
+.social-list {
+  width: 300px;
+  display: flex;
+}
+
+.welcome-page-wrapper {
+  height: 50vh;
+}
+
+.welcome-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-page > div {
+  font-size: 30px;
+  display: flex;
+}
+
+.nickname {
+  color: var(--nickname-color);
+  margin-right: 10px;
+}
+
+.instructions {
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: var(--color-bg-content);
+  padding: 20px 100px;
+  margin: 25px;
+  min-width: 405px;
+}
+
+.instructions > p {
+  font-size: calc(var(--font-size) + 2px);
+  text-align: center;
+}
+
+.welcome-page > button {
+  cursor: pointer;
+  background-color: var(--nickname-color);
+  color: var(--color-bg-content);
+  padding: 10px 50px;
+  border: none;
+  border-radius: 5px;
+  font-size: calc(var(--font-size) + 5px);
+}
+
+.confirm > svg {
+  width: 70px;
+  height: 70px;
+  fill: var(--nickname-color);
+  margin-bottom: 20px;
 }

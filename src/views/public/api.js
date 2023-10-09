@@ -1,22 +1,22 @@
 //get
 const get = async (endPoint, params = '') => {
-  const apiUrl = `/api/${endPoint}/${params}`;
+  const apiUrl = `/api${endPoint}/${params}`;
   console.log(`%cGET 요청: ${apiUrl} `, 'color: #a25cd1;');
 
-  const res = await fetch(apiUrl, {
+  const response = await fetch(apiUrl, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
   });
 
-  if (!res.ok) {
-    const errorContent = await res.join();
+  if (!response.ok) {
+    const errorContent = await response.json();
     const { reason } = errorContent;
 
     throw new Error(reason);
   }
 
-  const result = await res.json();
+  const result = await response.json();
 
   return result;
 };

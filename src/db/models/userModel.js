@@ -9,7 +9,7 @@ export class UserModel {
   }
 
   async findByEmail(email) {
-    return await User.findOne({ email });
+    return await User.findOne({ email }, { _id: 0, email: 1 });
   }
 }
 
