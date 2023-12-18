@@ -4,8 +4,8 @@ const accessKey = process.env.ACCESS_SECRET_KEY;
 const refreshKey = process.env.REFRESH_SECRET_KEY;
 
 export const jwtUtil = {
-  generateAccessToken: (user) => {
-    const payload = { userId: user.userId, role: user.role };
+  generateAccessToken: ({ user, nickname }) => {
+    const payload = { user, nickname };
 
     return jwt.sign(payload, accessKey, {
       algorithm: 'HS384',
@@ -13,12 +13,12 @@ export const jwtUtil = {
     });
   },
 
-  generateRefreshToken: (user) => {
-    const payload = { userId: user.userId };
+  generateRefreshToken: ({ user, nickname }) => {
+    const payload = { user, nickname };
 
     return jwt.sign(payload, refreshKey, {
       algorithm: 'HS512',
-      expiresIn: '14d',
+      expiresIn: '7d',
     });
   },
 
@@ -26,8 +26,8 @@ export const jwtUtil = {
     try {
       const accessDecoded = jwt.verify(access, accessKey);
       return {
-        userId: accessDecoded.userId,
-        role: accessDecoded.role,
+        user: accessDecoded.user,
+        nickname: accessDecoded.nickname,
       };
     } catch (error) {
       if (error.name === 'TokenExpiredError') {
@@ -42,7 +42,8 @@ export const jwtUtil = {
     try {
       const refreshDecoded = jwt.verify(refresh, refreshKey);
       return {
-        userId: refreshDecoded.userId,
+        user: refreshDecoded.user,
+        nickname: refreshDecoded.nickname,
       };
     } catch (error) {
       if (error.name === 'TokenExpiredError') {
