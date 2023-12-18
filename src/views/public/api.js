@@ -1,6 +1,11 @@
+import { isNull } from './util.js';
+import AppError from './errorHandler.js';
+
 //get
-const get = async (endPoint, params = '') => {
-  const apiUrl = `/api${endPoint}/${params}`;
+const get = async (endPoint, params) => {
+  const apiUrl = isNull(params)
+    ? `/api${endPoint}`
+    : `/api${endPoint}/${params}`;
   console.log(`%cGET 요청: ${apiUrl} `, 'color: #a25cd1;');
 
   const response = await fetch(apiUrl, {
@@ -11,9 +16,9 @@ const get = async (endPoint, params = '') => {
 
   if (!response.ok) {
     const errorContent = await response.json();
-    const { reason } = errorContent;
+    const { type, description } = errorContent;
 
-    throw new Error(reason);
+    throw new AppError(type, description);
   }
 
   const result = await response.json();
@@ -32,16 +37,15 @@ const post = async (endPoint, data) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      // Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
     body: bodyData,
   });
 
   if (!response.ok) {
     const errorContent = await response.json();
-    const { reason } = errorContent;
+    const { type, description } = errorContent;
 
-    throw new Error(reason);
+    throw new AppError(type, description);
   }
 
   const result = await response.json();

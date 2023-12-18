@@ -15,3 +15,4 @@ db.on('error', (error) =>
 );
 
 export * from './models/userModel.js';
+export * from './models/tokenModel.js';

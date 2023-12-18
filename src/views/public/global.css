@@ -1,0 +1,120 @@
+:root {
+  --color-bg-body: #eeeeee;
+  --color-bg-main: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background-color: var(--color-bg-body);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+input {
+  border: none;
+  outline: none;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+button {
+  margin: 0;
+  padding: 0;
+}
+
+/* error modal */
+
+.error-modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+
+.error-modal {
+  position: absolute;
+  top: 20px;
+  width: 100vw;
+
+  display: flex;
+  justify-content: center;
+}
+
+.error-notice-modal {
+  width: 250px;
+  height: 170px;
+  overflow: hidden;
+  background-color: white;
+  border: 1px solid red;
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-shadow: 1px 5px 10px 5px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.error-notice {
+  width: 100%;
+  height: 56px;
+  text-align: center;
+  padding: 10px;
+  background-color: var(--color-bg-body);
+  color: red;
+}
+
+.error-description {
+  padding: 15px;
+  font-size: 15px;
+  overflow: hidden;
+}
+
+.error-close {
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  background-color: #eeeeee;
+  padding: 3px 8px;
+  cursor: pointer;
+}
+
+.error-close:hover {
+  color: red;
+}
