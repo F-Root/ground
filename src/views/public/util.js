@@ -10,4 +10,8 @@ const isEmpty = (inputValue) => {
   return inputValue.trim() === '';
 };
 
-export { RegExp, isEmpty };
+const isNull = (value) => {
+  return value === undefined || value === null ? true : false;
+};
+
+export { RegExp, isEmpty, isNull };
