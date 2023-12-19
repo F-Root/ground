@@ -1,16 +1,20 @@
 import Component from '../../common/Component.js';
-import { icons } from '../../common/icons.js';
+import { icons } from '../../../public/icons.js';
 import * as api from '../../../public/api.js';
-import { RegExp, isEmpty } from '../../common/util.js';
+import { RegExp, isEmpty } from '../../../public/util.js';
+import ErrorModal from '../../common/ErrorModal.js';
 
 export default class Content extends Component {
-  setup() {}
   template() {
     return /* HTML */ `<div class="content-wrapper">
       <div class="content-container">${content()}</div>
+      <div class="error-modal-container"></div>
     </div>`;
   }
   setEvent() {
+    this.addEvent('click', '.ground_logo', () => {
+      location.href = '/';
+    });
     this.addEvent('click', '.sign-up-form > button', handleSubmit);
     this.addEvent('focusin', 'input[name=email]', handleFocusin);
     this.addEvent('focusout', 'input[name=email]', handleFocusout);
@@ -44,8 +48,7 @@ const handleSubmit = async (event) => {
     const newUser = await api.post('/signUp', Object.freeze(signUpData));
     renderWelcome(newUser.nick);
   } catch (error) {
-    console.log('회원가입 도중 에러가 발생했습니다:', error);
-    throw new Error('회원가입 도중 에러가 발생했습니다:', error.message);
+    showErrorModal(error);
   }
 };
 
@@ -112,8 +115,7 @@ const checkEmailDuplicate = async (email) => {
     const result = await api.get('/signUp', query);
     return result.available;
   } catch (error) {
-    console.error('이메일 중복을 확인하는 도중 에러가 발생했습니다:', error);
-    throw new Error('Failed to check email duplicate.');
+    showErrorModal(error);
   }
 };
 
@@ -145,6 +147,13 @@ const renderWelcome = (nickname) => {
   const container = document.querySelector('.content-container');
 
   container.innerHTML = welcome(nickname);
+};
+
+const showErrorModal = (error) => {
+  const errorModalContainer = document.querySelector('.error-modal-container');
+  new ErrorModal(errorModalContainer, error.message);
+  errorModalContainer.style.zIndex = '2';
+  errorModalContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
 };
 
 /* HTML FORMS */
