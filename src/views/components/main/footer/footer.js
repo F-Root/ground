@@ -1,7 +1,6 @@
 import Component from '../../common/Component.js';
 
 export default class Footer extends Component {
-  setup() {}
   template() {
     return /* HTML */ `<div class="footer-wrapper">
       <footer class="footer">
