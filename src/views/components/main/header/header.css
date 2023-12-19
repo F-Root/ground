@@ -4,7 +4,7 @@
   --color-bg-nav-drawer: #4c5161;
   --color-bg-nav-hover: #adb1ba;
   --height-navbar: 60px;
-  --margin: 20px;
+  --margin: 15px;
   --padding: 15px;
 
   background-color: var(--color-bg-navbar);
@@ -22,6 +22,7 @@
   margin: 0 auto;
   max-width: 1200px;
   height: var(--height-navbar);
+  position: relative;
 }
 
 /* 반응형 ui navigation drawer */
@@ -86,11 +87,17 @@
 
 .nav-side-item {
   margin-left: var(--margin);
-  cursor: pointer;
 }
 
 .nav-side-item:nth-child(2) {
   display: none;
+  cursor: pointer;
+}
+
+.nav-side-item:nth-child(3) {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }
 
 .navbar-search {
@@ -102,6 +109,7 @@
 .navbar-search-icon {
   color: var(--color-bg-navbar);
   padding-left: calc(var(--padding) - 5px);
+  cursor: pointer;
 }
 
 .navbar-search-modal {
@@ -119,13 +127,100 @@
   color: var(--color-text-navbar);
 }
 
-.flex-align-center {
+.flex-center {
   display: flex;
   align-items: center;
-  cursor: pointer;
+  justify-content: center;
 }
 
-#signIn {
+/* user icon hover시 icon focus animation 적용 */
+
+[data-tooltip-after-sign],
+[data-tooltip-before-sign] {
+  position: relative;
+  display: inherit;
+}
+
+[data-tooltip-before-sign] > svg,
+[data-tooltip-after-sign] > svg,
+.nav-drawer-menu-icon > svg,
+.nav-side-item:nth-child(3) {
+  transition: all 500ms;
+}
+
+.nav-side-item:nth-child(3):hover {
+  border-radius: 50%;
+  background-color: white;
+}
+
+.nav-drawer-menu-icon > svg:hover,
+.nav-side-item:nth-child(3):hover [data-tooltip-after-sign] > svg,
+.nav-side-item:nth-child(3):hover [data-tooltip-before-sign] > svg {
+  fill: var(--color-bg-nav-drawer);
+}
+
+.nav-side-item:nth-child(3):hover [data-tooltip-before-sign]::after {
+  content: attr(data-tooltip-before-sign);
+  position: absolute;
+  top: 150%;
+  right: -75%;
+
+  background-color: #dee0e0;
+  color: var(--color-bg-nav-drawer);
+  font-size: 12px;
+
+  width: 50px;
+  height: 20px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid var(--color-bg-nav-drawer);
+}
+
+.nav-side-item:nth-child(3):hover [data-tooltip-after-sign]::after {
+  content: attr(data-tooltip-after-sign);
+  position: absolute;
+  top: 150%;
+  right: -90%;
+
+  background-color: #dee0e0;
+  color: var(--color-bg-nav-drawer);
+  font-size: 12px;
+
+  width: 55px;
+  height: 20px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid var(--color-bg-nav-drawer);
+}
+
+.userModal {
+  width: 90px;
+  height: 70px;
+  box-shadow: rgba(63, 71, 77, 0.2) 0px 4px 10px 1px;
+  border-radius: 5px;
+  border: 1px solid var(--color-bg-nav-hover);
+  background-color: white;
+  color: var(--color-bg-nav-drawer);
+  font-size: 12.5px;
+
+  position: absolute;
+  top: 85%;
+  right: 5px;
+
+  display: inherit;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: auto;
+}
+
+.userModal > li {
+  width: 70px;
+  cursor: pointer;
+  padding: 2px 5px 3px;
+}
+
+.modalWrapper {
   display: inherit;
 }
 

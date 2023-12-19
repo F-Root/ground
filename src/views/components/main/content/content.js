@@ -1,7 +1,6 @@
 import Component from '../../common/Component.js';
 
 export default class Content extends Component {
-  setup() {}
   template() {
     return /* HTML */ `<div class="content-wrapper">
       <div class="content">

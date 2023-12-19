@@ -68,6 +68,17 @@
   margin-top: -1px;
 }
 
+.sign-in-input:nth-child(1) > input:focus,
+.sign-in-input:nth-child(2) > input:focus {
+  border-width: 2px;
+}
+
+.sign-in-error-text {
+  margin: 0 0 20px 3px;
+  color: red;
+  font-size: 9.5px;
+}
+
 .other-links {
   display: flex;
   justify-content: space-around;
