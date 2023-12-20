@@ -1,4 +1,4 @@
-import Component from '../../common/Component.js';
+import Component from '../Component.js';
 
 export default class Content extends Component {
   template() {
@@ -13,5 +13,8 @@ export default class Content extends Component {
         </aside>
       </div>
     </div>`;
+  }
+  setEvent() {
+    this.addEvent();
   }
 }

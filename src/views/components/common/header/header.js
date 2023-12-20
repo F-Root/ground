@@ -1,4 +1,4 @@
-import Component from '../../common/Component.js';
+import Component from '../Component.js';
 import { icons } from '../../../public/icons.js';
 import * as api from '../../../public/api.js';
 import { isNull } from '../../../public/util.js';
@@ -215,6 +215,9 @@ const userModal = () => {
   return /* HTML */ `<ul class="userModal">
     <li>마이페이지</li>
     <li>로그아웃</li>
+    <li>Ground 만들기</li>
+    <li>설정</li>
+    <li>스크랩</li>
   </ul>`;
 };
 
