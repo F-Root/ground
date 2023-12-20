@@ -1,7 +1,7 @@
 import Component from '../common/Component.js';
-import Header from './header/header.js';
-import Content from './content/content.js';
-import Footer from './footer/footer.js';
+import Header from '../common/header/header.js';
+import Content from '../common/content/content.js';
+import Footer from '../common/footer/footer.js';
 
 export default class App extends Component {
   template() {
