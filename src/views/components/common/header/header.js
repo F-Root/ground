@@ -213,11 +213,21 @@ const afterSign = () => {
 
 const userModal = () => {
   return /* HTML */ `<ul class="userModal">
-    <li>마이페이지</li>
-    <li>로그아웃</li>
-    <li>Ground 만들기</li>
-    <li>설정</li>
-    <li>스크랩</li>
+    <li>
+      <div><a href="#">마이페이지</a></div>
+    </li>
+    <li>
+      <div><a href="#">스크랩</a></div>
+    </li>
+    <li>
+      <div><a href="#">그라운드 만들기</a></div>
+    </li>
+    <li>
+      <div><a href="#">설정</a></div>
+    </li>
+    <li>
+      <div><a href="#">로그아웃</a></div>
+    </li>
   </ul>`;
 };
 
