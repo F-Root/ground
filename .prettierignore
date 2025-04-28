@@ -5,6 +5,10 @@ package-lock.json
 
 # settings
 .env
+.vscode/
 
 # version control
 **/.git
+
+# dist(bundle files)
+dist/
