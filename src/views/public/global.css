@@ -28,7 +28,8 @@ ol {
   margin: 0;
 }
 
-input {
+input,
+select {
   border: none;
   outline: none;
   padding: 0;
@@ -67,8 +68,8 @@ button {
 }
 
 .error-notice-modal {
-  width: 250px;
-  height: 170px;
+  width: 300px;
+  min-height: 170px;
   overflow: hidden;
   background-color: white;
   border: 1px solid red;
@@ -77,13 +78,14 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 
   box-shadow: 1px 5px 10px 5px rgba(0, 0, 0, 0.3);
   position: relative;
-  animation: fadeIn 0.3s ease-in-out;
+  animation: fadeInError 0.3s ease-in-out;
 }
 
-@keyframes fadeIn {
+@keyframes fadeInError {
   from {
     opacity: 0;
   }
@@ -105,6 +107,7 @@ button {
   padding: 15px;
   font-size: 15px;
   overflow: hidden;
+  white-space: pre-wrap;
 }
 
 .error-close {
@@ -113,8 +116,262 @@ button {
   background-color: #eeeeee;
   padding: 3px 8px;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
 .error-close:hover {
   color: red;
+}
+
+/* success modal */
+
+.success-modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+
+.success-modal {
+  position: absolute;
+  top: 100px;
+  width: 100vw;
+
+  display: flex;
+  justify-content: center;
+}
+
+.success-notice-modal {
+  width: 300px;
+  min-height: 170px;
+  overflow: hidden;
+  background-color: white;
+  border: 1px solid rgb(0, 132, 255);
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  box-shadow: 1px 5px 10px 5px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: fadeInSuccess 0.3s ease-in-out;
+}
+
+@keyframes fadeInSuccess {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.success-notice {
+  width: 100%;
+  height: 56px;
+  text-align: center;
+  padding: 10px;
+  background-color: var(--color-bg-body);
+  color: rgb(0, 132, 255);
+}
+
+.success-description {
+  padding: 15px;
+  font-size: 15px;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+
+.success-close {
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  background-color: #eeeeee;
+  padding: 3px 8px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.success-close:hover {
+  color: rgb(0, 132, 255);
+}
+
+/* Loading modal */
+
+.loading-modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+
+.loading-modal {
+  position: absolute;
+  top: 100px;
+  width: 100vw;
+
+  display: flex;
+  justify-content: center;
+}
+
+.loading-modal-content {
+  width: 300px;
+  min-height: 170px;
+  overflow: hidden;
+  background-color: white;
+  border: 1px solid rgb(123, 202, 233);
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  box-shadow: 1px 5px 10px 5px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: fadeInLoading 0.3s ease-in-out;
+}
+
+@keyframes fadeInLoading {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin: 30px auto 10px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-message {
+  max-height: 20px;
+  padding: 3px 8px;
+  margin-bottom: 20px;
+}
+
+.loading-complete {
+  display: flex;
+  align-items: center;
+  padding-top: 15px;
+}
+
+.loading-complete > svg {
+  width: 50px;
+  height: 50px;
+  color: #24bceb;
+}
+
+/* error page */
+
+.error-page {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.show-error {
+  margin: 85px 35px;
+}
+
+.show-error > h1 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.link-wrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.link-wrapper > a {
+  color: #24bceb;
+  transition: all 250ms ease-in-out;
+}
+
+.link-wrapper > a:hover {
+  color: #164375;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.show-error-code {
+  margin: 85px 35px;
+  background: #000;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.neon {
+  font-size: 3.5rem;
+  color: #fff;
+  /* 네온 글로우를 위한 다중 그림자 */
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px #0ff,
+    0 0 30px #0ff,
+    0 0 40px #0ff,
+    0 0 55px #0ff;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #0ff,
+      0 0 30px #0ff,
+      0 0 40px #0ff,
+      0 0 55px #0ff;
+  }
+  to {
+    text-shadow:
+      0 0 10px #fff,
+      0 0 20px #0ff,
+      0 0 30px #0ff,
+      0 0 50px #0ff,
+      0 0 75px #0ff,
+      0 0 100px #0ff;
+  }
+}
+
+.marquee {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: marquee 7s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
