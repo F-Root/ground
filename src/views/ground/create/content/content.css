@@ -1,0 +1,172 @@
+.create-wrapper {
+  --guide-font-size: 12px;
+  --label-font-size: 18px;
+  --color-bg-create-form: #e0e0e0;
+  --color-bg-create-button: #ffffff;
+  --color-bg-move-button: #e3e3e3;
+  --nickname-color: #349fd9;
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+.create-form-box {
+  margin: 100px auto;
+  padding: 1rem 1.5rem;
+  width: 75%;
+  min-width: 500px;
+
+  border: 1px solid lightgray;
+  border-radius: 8px;
+
+  background-color: var(--color-bg-create-form);
+}
+
+.create-form-box > h2 {
+  margin: 5px 5px 4.5rem;
+}
+
+.create-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-form > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.create-form-label {
+  width: 5rem;
+  font-size: var(--label-font-size);
+}
+
+.create-form-input-wrapper {
+  width: 20rem;
+  height: 6rem;
+}
+
+.create-form-input-wrapper > input {
+  width: 20rem;
+  height: 2rem;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.ground-profile-img {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-img-view {
+  flex: 1;
+}
+
+.profile-img-view > img {
+  cursor: pointer;
+  width: 70px;
+  height: 70px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 1px solid lightgray;
+}
+
+.profile-img-set {
+  flex: 2;
+}
+
+.profile-img-set > input {
+  display: none;
+}
+
+.create-form-guide {
+  font-size: var(--guide-font-size);
+}
+
+.create-form > button {
+  margin: 3rem 0 6px auto;
+  width: 5rem;
+  height: 2.5rem;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: var(--color-bg-create-button);
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  transition: all 250ms;
+}
+
+.create-form > button:hover {
+  color: #ffffff;
+  background-color: #969696;
+  border-color: #ffffff;
+}
+
+.create-error-text {
+  color: red;
+  font-size: 9.5px;
+  text-align: end;
+}
+
+.error-ground-img {
+  text-align: start;
+}
+
+.success-page-wrapper {
+  height: 50vh;
+  margin-top: 20vh;
+}
+
+.success-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.success-page > div {
+  font-size: 28px;
+  display: flex;
+}
+
+.instructions {
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 20px 100px;
+  min-width: 405px;
+}
+
+.instructions > p {
+  text-align: center;
+}
+
+.confirm > svg {
+  width: 70px;
+  height: 70px;
+  fill: var(--nickname-color);
+}
+
+strong {
+  color: var(--nickname-color);
+}
+
+.success-page > button {
+  margin: 2rem;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: var(--color-bg-move-button);
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  transition: all 250ms;
+}
+
+.success-page > button:hover {
+  color: #ffffff;
+  background-color: #b3b3b3;
+  border-color: #ffffff;
+}
