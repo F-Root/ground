@@ -1,0 +1,163 @@
+.grounds-wrapper {
+  --guide-font-size: 12px;
+  --label-font-size: 18px;
+  --subscribes-font-size: 14px;
+  --color-bg-setting-box: #e0e0e0;
+  --color-bg-selected-tab: #fafafa;
+  --color-bg-profile-button: #e3e3e3;
+
+  position: relative;
+  z-index: 1;
+  padding: 1rem;
+}
+
+.setting-grounds {
+  margin: 75px auto;
+  padding: 1rem 2rem 2rem;
+  width: 95%;
+  min-width: 500px;
+
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  background-color: var(--color-bg-setting-box);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.setting-navbar li:nth-child(2) {
+  background-color: var(--color-bg-selected-tab);
+}
+
+.grounds-form-box {
+  padding: 1rem 1.5rem;
+  background-color: var(--color-bg-selected-tab);
+  border-radius: 5px;
+}
+
+.grounds-form-box h2 {
+  margin: 5px 5px 4.5rem;
+}
+
+.grounds-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.grounds-form > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.grounds-form-label {
+  width: 10rem;
+  font-size: var(--label-font-size);
+}
+
+.grounds-list-select-wrapper,
+.grounds-list-subscribes-wrapper {
+  width: 25rem;
+  min-height: 6rem;
+}
+
+.grounds-list-select-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.grounds-list-select-wrapper > select {
+  width: 15rem;
+  height: 2rem;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.grounds-form > button {
+  height: 2.5rem;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: var(--color-bg-account-button);
+  border: 1px solid lightslategray;
+  border-radius: 5px;
+  transition: all 250ms;
+}
+
+.grounds-form > button:hover {
+  color: #ffffff;
+  background-color: #969696;
+  border-color: lightgray;
+}
+
+#go-update-page {
+  width: 10rem;
+  margin: 0 0 6px auto;
+}
+
+#update-subscribes {
+  width: 5rem;
+  margin: 3rem 0 6px auto;
+}
+
+/* subscribe list */
+
+.subscribes-header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-bottom: 2px solid lightgray;
+}
+
+.subscribes-grounds {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+  font-size: var(--subscribes-font-size);
+  transition:
+    background-color 300ms,
+    transform 300ms;
+}
+
+.subscribes-grounds.drag-over {
+  background-color: #f0f0f0;
+}
+
+.sub-col {
+  padding: 3px 10px;
+}
+
+.sub-col-1 {
+  flex: 1;
+  cursor: move;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+}
+
+.sub-col-1 > svg {
+  width: 16px;
+  height: 16px;
+}
+
+.sub-col-2 {
+  flex: 5;
+}
+
+.sub-col-3 {
+  flex: 2;
+  text-align: center;
+}
+
+.subscribes-grounds > .sub-col-3 {
+  cursor: pointer;
+  transition: all 200ms;
+}
+
+.subscribes-grounds > .sub-col-3:hover {
+  color: #ec4040;
+  font-weight: bold;
+}
