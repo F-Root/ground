@@ -1,0 +1,128 @@
+.profile-wrapper {
+  --guide-font-size: 12px;
+  --label-font-size: 18px;
+  --color-bg-setting-box: #e0e0e0;
+  --color-bg-selected-tab: #fafafa;
+  --color-bg-profile-button: #e3e3e3;
+
+  position: relative;
+  z-index: 1;
+  padding: 1rem;
+}
+
+.setting-profile {
+  margin: 75px auto;
+  padding: 1rem 2rem 2rem;
+  width: 95%;
+  min-width: 500px;
+
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  background-color: var(--color-bg-setting-box);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.setting-navbar li:nth-child(1) {
+  background-color: var(--color-bg-selected-tab);
+}
+
+.profile-form-box {
+  padding: 1rem 1.5rem;
+  background-color: var(--color-bg-selected-tab);
+  border-radius: 5px;
+}
+
+.profile-form-box > h2 {
+  margin: 5px 5px 4.5rem;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-form > div {
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  justify-content: space-evenly;
+}
+
+.profile-form-label {
+  width: 10rem;
+  font-size: var(--label-font-size);
+  /* min-height: 50px; */
+}
+
+.profile-form-input-wrapper {
+  width: 20rem;
+  height: 6rem;
+}
+
+.profile-form-input-wrapper > input {
+  width: 20rem;
+  height: 2rem;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.profile-form-guide {
+  font-size: var(--guide-font-size);
+}
+
+.profile-form-guide:last-child {
+  margin-top: 1px;
+}
+
+.profile-form > button {
+  margin: 3rem 0 6px auto;
+  width: 5rem;
+  height: 2.5rem;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: var(--color-bg-profile-button);
+  border: 1px solid lightslategray;
+  border-radius: 5px;
+  transition: all 250ms;
+}
+
+.profile-form > button:hover {
+  color: #ffffff;
+  background-color: #969696;
+  border-color: lightgray;
+}
+
+.user-profile-img {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-img-view {
+  flex: 1;
+}
+
+.profile-img-view > img {
+  cursor: pointer;
+  width: 70px;
+  height: 70px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 1px solid lightgray;
+}
+
+.profile-img-set {
+  flex: 2;
+}
+
+.profile-img-set > input {
+  display: none;
+}
+
+.profile-error-text {
+  color: red;
+  font-size: 9.5px;
+  text-align: end;
+}
