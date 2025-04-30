@@ -484,6 +484,21 @@
   }
 }
 
+.noSubscribe {
+  box-shadow: rgba(63, 71, 77, 0.5) 0px 4px 10px 1px;
+  border-radius: 5px;
+  border: 1px solid var(--color-bg-nav-hover);
+  background-color: white;
+  color: var(--color-bg-nav-drawer);
+  font-size: 12.5px;
+
+  position: absolute;
+  top: 85%;
+  left: 38px;
+
+  padding: 7px 10px;
+}
+
 /* 검색 결과 (팝업 아님) */
 .search-box-wrapper {
   position: relative;
