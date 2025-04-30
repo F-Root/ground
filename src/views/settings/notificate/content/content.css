@@ -1,0 +1,228 @@
+.notificate-wrapper {
+  --guide-font-size: 12px;
+  --label-font-size: 18px;
+  --notificate-font-size: 14px;
+  --check-button-font-size: 12px;
+  --color-bg-setting-box: #e0e0e0;
+  --color-bg-selected-tab: #fafafa;
+
+  position: relative;
+  z-index: 1;
+  padding: 1rem;
+}
+
+.setting-notificate {
+  margin: 75px auto;
+  padding: 1rem 2rem 2rem;
+  width: 95%;
+  min-width: 500px;
+
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  background-color: var(--color-bg-setting-box);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.setting-navbar li:nth-child(4) {
+  background-color: var(--color-bg-selected-tab);
+}
+
+.notificate-form-box {
+  padding: 1rem 1.5rem;
+  background-color: var(--color-bg-selected-tab);
+  border-radius: 5px;
+}
+
+.notificate-form-box h2 {
+  margin: 5px 5px 4.5rem;
+}
+
+.notificate-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.notificate-form > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.notificate-form-label {
+  width: 10rem;
+  font-size: var(--label-font-size);
+}
+
+.comment-notificate-select-wrapper,
+.reply-notificate-select-wrapper,
+.grounds-list-notificate-wrapper {
+  width: 25rem;
+  min-height: 6rem;
+}
+
+.comment-notificate-select-wrapper,
+.reply-notificate-select-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.comment-notificate-select-wrapper > select,
+.reply-notificate-select-wrapper > select {
+  width: 15rem;
+  height: 2rem;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.notificate-form > button {
+  margin: 3rem 0 6px auto;
+  width: 5rem;
+  height: 2.5rem;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: var(--color-bg-account-button);
+  border: 1px solid lightslategray;
+  border-radius: 5px;
+  transition: all 250ms;
+}
+
+.notificate-form > button:hover {
+  color: #ffffff;
+  background-color: #969696;
+  border-color: lightgray;
+}
+
+/* notificate list */
+
+.notificate-header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-bottom: 2px solid lightgray;
+  padding-bottom: 3px;
+}
+
+.notificate-grounds {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+  font-size: var(--notificate-font-size);
+}
+
+.sub-col {
+  padding: 3px 10px;
+  text-align: center;
+}
+
+.sub-col-1 {
+  flex: 4;
+}
+
+.sub-col-1.canceled {
+  flex: 7.5;
+  text-decoration: line-through;
+}
+
+.sub-col-2 {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.sub-col-2.canceled {
+  display: none;
+  /* pointer-events: none;
+  color: #adadad;
+  border-color: #adadad; */
+}
+
+.sub-col-3 {
+  flex: 3;
+}
+
+.notificate-grounds > .sub-col-3 {
+  cursor: pointer;
+  /* font-size: var(--col-button-font-size); */
+  transition: all 200ms;
+}
+
+.notificate-grounds > .sub-col-3:hover {
+  color: #ec4040;
+  font-weight: bold;
+}
+
+.check-button {
+  border: 1px solid lightgray;
+  border-radius: 20px;
+  padding: 5px;
+  font-size: var(--check-button-font-size);
+  cursor: pointer;
+  transition: all 200ms;
+}
+
+.check-button.sort {
+  margin: 3px 15px;
+}
+
+.check-button.tabs {
+  margin: 3px 10px;
+}
+
+.check-button:hover {
+  color: #ccffff;
+  background-color: #5a5a5a;
+  border-color: #ccffff;
+  font-weight: bold;
+}
+
+.noti-checkboxes {
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  visibility: hidden;
+}
+
+.sub-col-2 label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notificate-cancel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 알림 선택 -> 전체글 */
+.tab-list-wrapper {
+  display: none;
+  border: 1px solid #2cd1d1;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.tab-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.tab-list > li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notificate-checked {
+  border: 2px solid lightblue;
+  color: #0eafcb;
+}

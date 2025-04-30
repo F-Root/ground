@@ -1,0 +1,178 @@
+.account-wrapper {
+  --guide-font-size: 12px;
+  --label-font-size: 18px;
+  --color-bg-setting-box: #e0e0e0;
+  --color-bg-selected-tab: #fafafa;
+  --color-bg-account-button: #e3e3e3;
+
+  position: relative;
+  z-index: 1;
+  padding: 1rem;
+}
+
+.setting-account {
+  margin: 75px auto;
+  padding: 1rem 2rem 2rem;
+  width: 95%;
+  min-width: 500px;
+
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  background-color: var(--color-bg-setting-box);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.setting-navbar li:nth-child(3) {
+  background-color: var(--color-bg-selected-tab);
+}
+
+.account-form-box {
+  padding: 1rem 1.5rem;
+  background-color: var(--color-bg-selected-tab);
+  border-radius: 5px;
+}
+
+.account-form-box > h2 {
+  margin: 15px 15px 4rem;
+}
+
+.email-setting,
+.email-verify,
+.password-setting {
+  display: flex;
+  flex-direction: column;
+}
+
+.email-setting > div,
+.email-verify > div,
+.password-setting > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.email-setting-label,
+.email-verify-label,
+.password-setting-label {
+  width: 10rem;
+  font-size: var(--label-font-size);
+}
+
+.email-setting-input-wrapper,
+.email-verify-input-wrapper,
+.password-setting-button-wrapper {
+  width: 20rem;
+  height: 6rem;
+}
+
+.email-setting-input-wrapper > input,
+.email-verify-input-wrapper > input {
+  width: 20rem;
+  height: 2rem;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.email-setting-guide,
+.email-verify-guide {
+  margin-left: 1px;
+  font-size: var(--guide-font-size);
+}
+
+.email-verify-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.email-verify-timer {
+  margin-right: 1px;
+  font-size: var(--guide-font-size);
+}
+
+.email-verify-timer > strong {
+  margin-right: 1px;
+  color: #bd3440;
+}
+
+.email-setting > button,
+.email-verify > button {
+  margin: 2rem 0 6px auto;
+  width: 11rem;
+  height: 2.5rem;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: var(--color-bg-account-button);
+  border: 1px solid lightslategray;
+  border-radius: 5px;
+  transition: all 250ms;
+  position: relative;
+}
+
+.email-setting > button > span,
+.email-verify > button > span {
+  position: absolute;
+  top: 11px;
+  left: 15px;
+}
+
+.email-setting > button:hover,
+.email-verify > button:hover {
+  color: #ffffff;
+  background-color: #969696;
+  border-color: lightgray;
+}
+
+hr {
+  margin: 30px auto;
+}
+
+.password-setting-button-wrapper > button {
+  width: 15rem;
+  height: 2.5rem;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: var(--color-bg-account-button);
+  border: 1px solid lightslategray;
+  border-radius: 5px;
+  transition: all 250ms;
+  position: relative;
+}
+
+.password-setting-button-wrapper > button > span {
+  position: absolute;
+  top: 9px;
+  left: 13px;
+}
+
+.password-setting-button-wrapper > button:hover {
+  color: #ffffff;
+  background-color: #969696;
+  border-color: lightgray;
+}
+
+.account-error-text {
+  color: red;
+  font-size: 9.5px;
+  text-align: end;
+}
+
+/* carousel */
+.email-verify {
+  display: none;
+}
+
+.verify-carousel {
+  /* position: relative; */
+}
+
+.slide {
+  display: none;
+}
+
+.slide.active {
+  display: flex;
+}

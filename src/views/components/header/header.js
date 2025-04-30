@@ -43,6 +43,10 @@ export default class Header extends Component {
         }
         signIcon.innerHTML = beforeSign();
       } catch (error) {
+        //비 로그인 시
+        if (error.name == 'Unauthorized') {
+          return (this.state.subscribes = []);
+        }
         showErrorModal({
           message: '에러가 발생했습니다. 관리자에게 문의해 주세요.',
         });
@@ -626,12 +630,18 @@ const subscribePopup = ({ subscribes }) => {
       (acc += `<li><a href="/ground/${id}">${name} 그라운드</a></li>`),
     ''
   );
-  return /* HTML */ `<ul class="subscribePopup">
-    <li>
-      <a href="/settings/grounds/#subscribes">구독 중인 그라운드</a>
-    </li>
-    ${subscribelist}
-  </ul>`;
+  if (subscribelist.length > 0) {
+    return /* HTML */ `<ul class="subscribePopup">
+      <li>
+        <a href="/settings/grounds/#subscribes">구독 중인 그라운드</a>
+      </li>
+      ${subscribelist}
+    </ul>`;
+  } else {
+    return /* HTML */ `<div class="noSubscribe">
+      구독 중인 그라운드가 없습니다.
+    </div>`;
+  }
 };
 
 const popularPopup = () => {
