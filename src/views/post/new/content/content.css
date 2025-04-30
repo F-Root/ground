@@ -1,0 +1,171 @@
+.ground-view-wrapper {
+  --color-bg-button: #ffffff;
+}
+
+.ground-form-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+/* common */
+
+.button-wrapper {
+  display: flex;
+}
+
+.button-wrapper > button {
+  border: 1px solid lightgray;
+  background-color: var(--color-bg-button);
+
+  display: flex;
+  align-items: center;
+
+  padding: 5px 8px;
+  cursor: pointer;
+  min-width: 65px;
+  flex: 1;
+  transition: all 250ms;
+}
+
+.button-wrapper > button > span {
+  display: flex;
+  align-items: center;
+}
+
+.button-wrapper > button > span:nth-child(2) {
+  margin-left: 3px;
+  min-width: 25px;
+  white-space: nowrap;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.button-wrapper > button:hover {
+  background-color: aliceblue;
+  color: #081147;
+  border-color: #081147;
+  z-index: 5;
+}
+
+/* ground title */
+
+.ground-title {
+  display: flex;
+  padding: 1rem;
+  border-bottom: 1px solid lightgray;
+}
+
+.ground-icon-wrapper {
+}
+
+.ground-icon-link {
+  outline: 0;
+}
+
+.ground-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 100%;
+}
+
+.ground-info-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+}
+
+.ground-info-head {
+  display: flex;
+}
+
+.title-button {
+  margin-left: auto;
+}
+
+.title-button > button {
+  margin-left: 7px;
+}
+
+.title-button > button:first-child,
+.title-button > button:last-child {
+  flex: 2 1 auto;
+}
+
+.ground-info-description {
+  font-size: 12px;
+}
+
+/* ground content */
+
+.category-select-wrap,
+.title-input-wrap {
+  padding: 10px 10px 0px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.category-select-wrap > select {
+  appearance: none;
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 8px 10px;
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+}
+
+.title-input-wrap > input {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 8px 10px;
+}
+
+.category-select-wrap > select:focus-visible,
+.title-input-wrap > input:focus-visible {
+  outline: 1.8px solid gray;
+  border-color: transparent;
+}
+
+/* ground post button */
+
+.ground-post-button {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0px 10px 10px 10px;
+}
+
+.post-new {
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  transition: all 250ms;
+}
+
+.post-cancel {
+  margin-left: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  transition: all 250ms;
+}
+
+.post-new:hover,
+.post-cancel:hover {
+  color: #ffffff;
+  background-color: #b3b3b3;
+  border-color: #ffffff;
+}
+
+/* editor */
+
+#editor {
+  height: 500px;
+}
+
+.editor-wrapper {
+  padding: 10px;
+}
