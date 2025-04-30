@@ -2,29 +2,54 @@
 	"name": "ground",
 	"version": "1.0.0",
 	"description": "ground",
-	"main": "index.js",
-	"type": "module",
+	"private": true,
 	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "node index.js",
 		"dev": "nodemon index.js",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"dev-babel": "nodemon index.js --exec babel-node",
+		"build": ""
 	},
 	"author": "root",
 	"license": "ISC",
 	"dependencies": {
+		"@azure/identity": "^4.6.0",
+		"@azure/storage-blob": "^12.26.0",
+		"@babel/runtime": "^7.27.0",
 		"bcrypt": "^5.1.1",
+		"cookie": "^1.0.2",
 		"cookie-parser": "^1.4.6",
-		"dotenv": "^16.3.1",
+		"cookie-signature": "^1.2.2",
+		"dotenv": "^16.4.7",
 		"express": "^4.18.2",
 		"joi": "^17.11.0",
 		"jsonwebtoken": "^9.0.2",
-		"mongoose": "^7.5.2"
+		"moment": "^2.30.1",
+		"mongoose": "^7.5.2",
+		"multer": "^1.4.5-lts.1",
+		"nanoid": "^3.3.11",
+		"nanoid-dictionary": "^5.0.0-beta.1",
+		"nodemailer": "^6.10.0",
+		"quill": "^2.0.0",
+		"ws": "^8.18.1"
 	},
 	"devDependencies": {
+		"@babel/cli": "^7.23.9",
+		"@babel/core": "^7.24.0",
+		"@babel/node": "^7.23.9",
+		"@babel/plugin-transform-runtime": "^7.24.0",
+		"@babel/preset-env": "^7.24.0",
+		"babel-loader": "^9.1.3",
+		"copy-webpack-plugin": "^13.0.0",
+		"css-loader": "^6.10.0",
 		"eslint": "^8.48.0",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-prettier": "^5.0.0",
-		"nodemon": "^2.0.22",
-		"prettier": "^3.0.3"
+		"html-webpack-plugin": "^5.6.0",
+		"nodemon": "^3.0.3",
+		"prettier": "^3.0.3",
+		"style-loader": "^3.3.4",
+		"webpack": "^5.90.3",
+		"webpack-cli": "^5.1.4"
 	}
 }
