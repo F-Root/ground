@@ -1,11 +1,12 @@
 import jwt from 'jsonwebtoken';
+import { AppError } from '../middlewares/index.js';
 
 const accessKey = process.env.ACCESS_SECRET_KEY;
 const refreshKey = process.env.REFRESH_SECRET_KEY;
 
 export const jwtUtil = {
-  generateAccessToken: ({ user, nickname }) => {
-    const payload = { user, nickname };
+  generateAccessToken: ({ userId, createdAt }) => {
+    const payload = { userId, createdAt };
 
     return jwt.sign(payload, accessKey, {
       algorithm: 'HS384',
@@ -13,8 +14,8 @@ export const jwtUtil = {
     });
   },
 
-  generateRefreshToken: ({ user, nickname }) => {
-    const payload = { user, nickname };
+  generateRefreshToken: ({ userId, createdAt }) => {
+    const payload = { userId, createdAt };
 
     return jwt.sign(payload, refreshKey, {
       algorithm: 'HS512',
@@ -24,32 +25,24 @@ export const jwtUtil = {
 
   verifyAccess: (access) => {
     try {
-      const accessDecoded = jwt.verify(access, accessKey);
-      return {
-        user: accessDecoded.user,
-        nickname: accessDecoded.nickname,
-      };
+      return jwt.verify(access, accessKey);
     } catch (error) {
       if (error.name === 'TokenExpiredError') {
-        throw new Error('EXPIRED_ACCESS_TOKEN_ERROR');
+        throw new AppError(error.name, 'EXPIRED_ACCESS_TOKEN_ERROR', 401);
       } else {
-        throw new Error('INVALID_ACCESS_TOKEN_ERROR');
+        throw new AppError(error.name, 'INVALID_ACCESS_TOKEN_ERROR', 401);
       }
     }
   },
 
   verifyRefresh: (refresh) => {
     try {
-      const refreshDecoded = jwt.verify(refresh, refreshKey);
-      return {
-        user: refreshDecoded.user,
-        nickname: refreshDecoded.nickname,
-      };
+      return jwt.verify(refresh, refreshKey);
     } catch (error) {
       if (error.name === 'TokenExpiredError') {
-        throw new Error('EXPIRED_REFRESH_TOKEN_ERROR');
+        throw new AppError(error.name, 'EXPIRED_REFRESH_TOKEN_ERROR', 401);
       } else {
-        throw new Error('INVALID_REFRESH_TOKEN_ERROR');
+        throw new AppError(error.name, 'INVALID_REFRESH_TOKEN_ERROR', 401);
       }
     }
   },
