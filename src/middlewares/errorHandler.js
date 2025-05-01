@@ -18,6 +18,7 @@ class AppError extends Error {
 const errorHandler = (error, req, res, next) => {
   const warningColor = '\x1b[33m'; //yellow
   const resetColor = '\x1b[0m'; //reset to default
+  console.error('에러핸들러실행\n');
   console.log(`${warningColor}${error.stack}${resetColor}`); //express console
 
   if (error instanceof AppError) {
@@ -25,7 +26,9 @@ const errorHandler = (error, req, res, next) => {
       .status(error.httpCode)
       .json({ type: error.name, description: error.message });
   } else {
-    res.status(500).json({ type: 'error', description: error.message });
+    res
+      .status(500)
+      .json({ type: error.name || 'ServerError', description: error.message });
   }
 };
 
