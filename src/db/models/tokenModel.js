@@ -3,25 +3,21 @@ import { TokenSchema } from '../schemas/tokenSchema.js';
 
 const Token = model('tokens', TokenSchema);
 
-export class TokenModel {
-  async createRefresh(token) {
-    return await Token.create(token);
+class TokenModel {
+  async createToken({ refreshToken, accessToken }) {
+    return await Token.create({ refreshToken, accessToken });
   }
-  async findEmail(hashedEmail) {
-    return await Token.findOne(
-      { hashedEmail },
-      { _id: 0, email: 1, hashedEmail: 1, nickname: 1 }
+  async findRefreshTokenByAccessToken(accessToken) {
+    return await Token.findOne({ accessToken }, { _id: 0, refreshToken: 1 });
+  }
+  async updateToken(prevAccessToken, newAccessToken) {
+    return await Token.updateOne(
+      { accessToken: prevAccessToken },
+      { $set: { accessToken: newAccessToken } }
     );
   }
-  async findRefreshToken(hashedEmail) {
-    return await Token.findOne(
-      { hashedEmail },
-      { _id: 0, refreshToken: 1, email: 1 }
-    );
-  }
-  // async updateToken(token) {}
-  async deleteToken(email) {
-    return await Token.deleteOne({ email });
+  async deleteToken(accessToken) {
+    return await Token.deleteOne({ accessToken });
   }
   async deleteAllToken() {
     return await Token.deleteMany({});
