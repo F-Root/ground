@@ -6,17 +6,7 @@ const TokenSchema = new Schema(
       type: String,
       required: true,
     },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    hashedEmail: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    nickname: {
+    accessToken: {
       type: String,
       required: true,
     },
@@ -26,5 +16,8 @@ const TokenSchema = new Schema(
     timestamps: true,
   }
 );
+// TTL 인덱스 생성: 7일 - 초 단위 (refresh token 기준)
+const expiresIn = 60 * 60 * 24 * 7;
+TokenSchema.index({ createdAt: 1 }, { expireAfterSeconds: expiresIn });
 
 export { TokenSchema };
