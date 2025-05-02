@@ -155,16 +155,16 @@ commentRouter.get('/position', async (req, res, next) => {
     } = await commentService.getPrevReplies(commentId, replyId, 'include');
     replyCheck[period] = reply;
 
-    // reply 이후 대댓글이 더 존재하는지 확인
-    if (replies.length > 5) {
-      // reply를 포함해서 나온 대댓글들이 총 5개보다 적을 경우
+    // reply 이후 답글이 더 존재하는지 확인
+    if (replies.length < 5) {
+      // reply를 포함해서 나온 답글들이 총 5개보다 적을 경우
       const restReplies = 5 - replies.length; // 출력되어야 할 남은 대댓글 갯수
       const {
         replies: moreReplies,
         checkCreated: { reply, period }, // 다음 답글
       } = await commentService.getNextReplies(commentId, replyId, restReplies);
       replyCheck[period] = reply;
-      // 대댓글 목록 합치기
+      // 답글 목록 합치기
       replies.push(...moreReplies);
     } else {
       const { reply, period } = await commentService.checkCreated({
@@ -175,7 +175,7 @@ commentRouter.get('/position', async (req, res, next) => {
       replyCheck[period] = reply;
     }
 
-    // comment(댓글)의 대댓글 갯수 확인
+    // comment(댓글)의 답글 갯수 확인
     const numberOfPagingReplies = await commentService.getNumberOfReplies([
       commentId,
     ]);
