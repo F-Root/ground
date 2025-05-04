@@ -1,4 +1,4 @@
-import Component from '../components/common/Component.js';
+import Component from '../components/core/Component.js';
 
 // uses Quill editor / link - https://quilljs.com/
 import 'quill/dist/quill.snow.css';

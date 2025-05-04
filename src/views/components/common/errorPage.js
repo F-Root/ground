@@ -1,4 +1,4 @@
-import Component from './Component';
+import Component from '../core/Component.js';
 
 export default class ErrorPage extends Component {
   template() {

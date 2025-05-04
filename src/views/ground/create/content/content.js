@@ -1,4 +1,4 @@
-import Component from '../../../components/common/Component.js';
+import Component from '../../../components/core/Component.js';
 import Content from '../../../components/content/content.js';
 import * as api from '../../../public/api.js';
 import { RegEx, isEmpty } from '../../../public/util.js';

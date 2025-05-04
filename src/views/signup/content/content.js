@@ -1,4 +1,4 @@
-import Component from '../../components/common/Component.js';
+import Component from '../../components/core/Component.js';
 import { icons } from '../../public/icons.js';
 import * as api from '../../public/api.js';
 import ErrorModal from '../../components/common/ErrorModal.js';

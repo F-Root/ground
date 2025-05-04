@@ -1,8 +1,8 @@
-import Component from '../../../components/common/Component.js';
+import Component from '../../../components/core/Component.js';
 import Content from '../../../components/content/content.js';
-import WysiwigForm from '../../../public/wysiwig.js';
+import { observable, observe } from '../../../components/core/observer.js';
 import * as api from '../../../public/api.js';
-import { observable, observe } from '../../../components/common/observer.js';
+import WysiwigForm from '../../../public/wysiwig.js';
 import { icons } from '../../../public/icons.js';
 import { isEmpty } from '../../../public/util.js';
 import ErrorModal from '../../../components/common/ErrorModal.js';

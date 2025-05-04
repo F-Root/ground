@@ -1,8 +1,8 @@
-import Component from '../../../components/common/Component.js';
+import Component from '../../../components/core/Component.js';
 import Content from '../../../components/content/content.js';
-import { settingNavBar } from '../../common/navbar.js';
+import { observable, observe } from '../../../components/core/observer.js';
 import * as api from '../../../public/api.js';
-import { observable, observe } from '../../../components/common/observer.js';
+import { settingNavBar } from '../../common/navbar.js';
 import ErrorModal from '../../../components/common/ErrorModal.js';
 import { isEmpty } from '../../../public/util.js';
 import { icons } from '../../../public/icons.js';

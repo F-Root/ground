@@ -1,7 +1,7 @@
-import Component from '../../components/common/Component.js';
+import Component from '../../components/core/Component.js';
 import Content from '../../components/content/content.js';
+import { observable, observe } from '../../components/core/observer.js';
 import * as api from '../../public/api.js';
-import { observable, observe } from '../../components/common/observer.js';
 
 export default class MainWrapper extends Content {
   mounted() {

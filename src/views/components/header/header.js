@@ -1,8 +1,8 @@
-import Component from '../common/Component.js';
+import Component from '../core/Component.js';
 import { icons } from '../../public/icons.js';
 import * as api from '../../public/api.js';
 import { isEmpty, isNull, debounce } from '../../public/util.js';
-import { observable, observe } from '../common/observer.js';
+import { observable, observe } from '../core/observer.js';
 import ErrorModal from '../common/ErrorModal.js';
 
 export default class Header extends Component {
