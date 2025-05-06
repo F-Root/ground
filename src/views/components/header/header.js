@@ -3,7 +3,7 @@ import { icons } from '../../public/icons.js';
 import * as api from '../../public/api.js';
 import { isEmpty, isNull, debounce } from '../../public/util.js';
 import { observable, observe } from '../core/observer.js';
-import ErrorModal from '../common/ErrorModal.js';
+import showErrorModal from '../common/ErrorModal.js';
 
 export default class Header extends Component {
   #drawerStatus = false;
@@ -47,9 +47,13 @@ export default class Header extends Component {
         if (error.name == 'Unauthorized') {
           return (this.state.subscribes = []);
         }
-        showErrorModal({
-          message: '에러가 발생했습니다. 관리자에게 문의해 주세요.',
-        });
+        showErrorModal(
+          {
+            message: '에러가 발생했습니다. 관리자에게 문의해 주세요.',
+          },
+          '.header-error-modal',
+          '15'
+        );
       }
     });
     this.addWindowEvent('resize', () => {
@@ -208,14 +212,6 @@ export default class Header extends Component {
 
 /* Functions */
 
-const showErrorModal = (error) => {
-  const errorModalContainer = document.querySelector('.header-error-modal');
-  new ErrorModal(errorModalContainer, error.message);
-  errorModalContainer.style.zIndex = '15';
-  errorModalContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
-  document.querySelector('.error-close').focus();
-};
-
 async function handleSearch(keyword) {
   const wrapper = document.querySelector('.search-box-wrapper');
   wrapper.innerHTML = searchResultBox(keyword); // 렌더링
@@ -351,9 +347,13 @@ const socketConnection = (state) => {
 
   ws.addEventListener('error', (error) => {
     // console.error(error);
-    showErrorModal({
-      message: '에러가 발생했습니다. 관리자에게 문의해 주세요.',
-    });
+    showErrorModal(
+      {
+        message: '에러가 발생했습니다. 관리자에게 문의해 주세요.',
+      },
+      '.header-error-modal',
+      '15'
+    );
   });
 
   ws.addEventListener('close', async (event) => {
@@ -371,9 +371,13 @@ const renewCookie = async (state) => {
       socketConnection(state);
     }
   } catch (error) {
-    showErrorModal({
-      message: '에러가 발생했습니다. 관리자에게 문의해 주세요.',
-    });
+    showErrorModal(
+      {
+        message: '에러가 발생했습니다. 관리자에게 문의해 주세요.',
+      },
+      '.header-error-modal',
+      '15'
+    );
   }
 };
 
@@ -447,9 +451,13 @@ const getLink = async ({ type, id, contentUrl, commentUrl }) => {
     //코멘트를 찾는 url setting
     return /* HTML */ `/ground/${id}/${contentUrl}/${query}&cp=${countPage}`;
   } catch (error) {
-    showErrorModal({
-      message: '에러가 발생했습니다. 관리자에게 문의해 주세요.',
-    });
+    showErrorModal(
+      {
+        message: '에러가 발생했습니다. 관리자에게 문의해 주세요.',
+      },
+      '.header-error-modal',
+      '15'
+    );
   }
 };
 

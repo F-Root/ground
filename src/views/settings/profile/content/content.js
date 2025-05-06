@@ -5,8 +5,8 @@ import * as api from '../../../public/api.js';
 import { settingNavBar } from '../../common/navbar.js';
 import { RegEx, isEmpty } from '../../../public/util.js';
 import { icons } from '../../../public/icons.js';
-import ErrorModal from '../../../components/common/ErrorModal.js';
-import SuccessModal from '../../../components/common/SuccessModal.js';
+import showErrorModal from '../../../components/common/ErrorModal.js';
+import showSuccessModal from '../../../components/common/SuccessModal.js';
 
 export default class ProfileWrapper extends Content {
   mounted() {
@@ -69,24 +69,6 @@ class ProfileForm extends Component {
 
 const getUserInfo = async () => {
   return await api.get({ endPoint: '/user/loggedUser' });
-};
-
-const showErrorModal = (error) => {
-  const errorModalContainer = document.querySelector('.error-modal-container');
-  new ErrorModal(errorModalContainer, error.message);
-  errorModalContainer.style.zIndex = '2';
-  errorModalContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
-  document.querySelector('.error-close').focus();
-};
-
-const showSuccessModal = (data) => {
-  const successModalContainer = document.querySelector(
-    '.success-modal-container'
-  );
-  new SuccessModal(successModalContainer, data);
-  successModalContainer.style.zIndex = '2';
-  successModalContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
-  document.querySelector('.success-close').focus();
 };
 
 async function handleSubmit(event) {

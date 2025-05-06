@@ -2,7 +2,7 @@ import Component from '../../../components/core/Component.js';
 import Content from '../../../components/content/content.js';
 import { observable, observe } from '../../../components/core/observer.js';
 import * as api from '../../../public/api.js';
-import ErrorModal from '../../../components/common/ErrorModal.js';
+import showErrorModal from '../../../components/common/ErrorModal.js';
 import ErrorPage from '../../../components/common/errorPage.js';
 import { icons } from '../../../public/icons.js';
 import { isNull } from '../../../public/util.js';
@@ -205,14 +205,6 @@ class BoardForm extends Component {
 }
 
 /* Functions */
-
-const showErrorModal = (error) => {
-  const errorModalContainer = document.querySelector('.error-modal-container');
-  new ErrorModal(errorModalContainer, error.message);
-  errorModalContainer.style.zIndex = '2';
-  errorModalContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
-  document.querySelector('.error-close').focus();
-};
 
 const getGroundInfo = async () => {
   const urlPath = location.pathname.split('/').filter((entry) => entry !== '');
