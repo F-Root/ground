@@ -1,9 +1,9 @@
-import Component from '../../../components/common/Component.js';
+import Component from '../../../components/core/Component.js';
 import Content from '../../../components/content/content.js';
-import { settingNavBar } from '../../common/navbar.js';
+import { observable, observe } from '../../../components/core/observer.js';
 import * as api from '../../../public/api.js';
-import { observable, observe } from '../../../components/common/observer.js';
-import ErrorModal from '../../../components/common/ErrorModal.js';
+import { settingNavBar } from '../../common/navbar.js';
+import showErrorModal from '../../../components/common/ErrorModal.js';
 import { icons } from '../../../public/icons.js';
 
 export default class GroundsWrapper extends Content {
@@ -207,14 +207,6 @@ const getMyGroundsInfo = async () => {
 
 const getSubscribesInfo = async () => {
   return await api.get({ endPoint: '/user/subscribe/grounds' });
-};
-
-const showErrorModal = (error) => {
-  const errorModalContainer = document.querySelector('.error-modal-container');
-  new ErrorModal(errorModalContainer, error.message);
-  errorModalContainer.style.zIndex = '2';
-  errorModalContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
-  document.querySelector('.error-close').focus();
 };
 
 /* drag event FLIP animation */

@@ -1,4 +1,4 @@
-import Component from '../common/Component.js';
+import Component from '../core/Component.js';
 
 export default class Content extends Component {
   template() {

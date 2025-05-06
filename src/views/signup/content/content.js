@@ -1,9 +1,9 @@
-import Component from '../../components/common/Component.js';
+import Component from '../../components/core/Component.js';
 import { icons } from '../../public/icons.js';
 import * as api from '../../public/api.js';
-import ErrorModal from '../../components/common/ErrorModal.js';
-import LoadingModal from '../../components/common/LoadingModal.js';
-import SuccessModal from '../../components/common/SuccessModal.js';
+import showErrorModal from '../../components/common/ErrorModal.js';
+import showLoadingModal from '../../components/common/LoadingModal.js';
+import showSuccessModal from '../../components/common/SuccessModal.js';
 import { RegEx, isEmpty, generateRandomNumber } from '../../public/util.js';
 
 export default class Content extends Component {
@@ -288,33 +288,6 @@ const renderWelcome = (nickname) => {
   const container = document.querySelector('.content-container');
 
   container.innerHTML = welcome(nickname);
-};
-
-const showErrorModal = (error) => {
-  const errorModalContainer = document.querySelector('.error-modal-container');
-  new ErrorModal(errorModalContainer, error.message);
-  errorModalContainer.style.zIndex = '2';
-  errorModalContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
-  document.querySelector('.error-close').focus();
-};
-
-const showSuccessModal = (data) => {
-  const successModalContainer = document.querySelector(
-    '.success-modal-container'
-  );
-  new SuccessModal(successModalContainer, data);
-  successModalContainer.style.zIndex = '2';
-  successModalContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
-  document.querySelector('.success-close').focus();
-};
-
-const showLoadingModal = (message) => {
-  const loadingModalContainer = document.querySelector(
-    '.loading-modal-container'
-  );
-  new LoadingModal(loadingModalContainer, message);
-  loadingModalContainer.style.zIndex = '2';
-  loadingModalContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
 };
 
 const runtimer = () => {

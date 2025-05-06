@@ -1,6 +1,6 @@
-import Component from './Component.js';
+import Component from '../core/Component.js';
 
-export default class ErrorModal extends Component {
+class ErrorModal extends Component {
   template() {
     return /* HTML */ `
       <div class="error-modal">
@@ -20,3 +20,17 @@ export default class ErrorModal extends Component {
     });
   }
 }
+
+const showErrorModal = (
+  error,
+  element = '.error-modal-container',
+  zIndex = '4'
+) => {
+  const errorModalContainer = document.querySelector(element);
+  new ErrorModal(errorModalContainer, error.message);
+  errorModalContainer.style.zIndex = zIndex;
+  errorModalContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
+  document.querySelector('.error-close').focus();
+};
+
+export default showErrorModal;

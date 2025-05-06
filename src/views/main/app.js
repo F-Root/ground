@@ -1,4 +1,4 @@
-import Component from '../components/common/Component.js';
+import Component from '../components/core/Component.js';
 import Header from '../components/header/header.js';
 import Footer from '../components/footer/footer.js';
 import MainWrapper from './content/content.js';

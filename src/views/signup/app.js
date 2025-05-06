@@ -1,4 +1,4 @@
-import Component from '../components/common/Component.js';
+import Component from '../components/core/Component.js';
 import Content from './content/content.js';
 
 export default class App extends Component {

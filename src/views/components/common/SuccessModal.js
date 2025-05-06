@@ -1,6 +1,6 @@
-import Component from './Component.js';
+import Component from '../core/Component.js';
 
-export default class SuccessModal extends Component {
+class SuccessModal extends Component {
   template() {
     return /* HTML */ `
       <div class="success-modal">
@@ -20,3 +20,15 @@ export default class SuccessModal extends Component {
     });
   }
 }
+
+const showSuccessModal = (data) => {
+  const successModalContainer = document.querySelector(
+    '.success-modal-container'
+  );
+  new SuccessModal(successModalContainer, data);
+  successModalContainer.style.zIndex = '2';
+  successModalContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
+  document.querySelector('.success-close').focus();
+};
+
+export default showSuccessModal;

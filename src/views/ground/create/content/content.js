@@ -1,9 +1,9 @@
-import Component from '../../../components/common/Component.js';
+import Component from '../../../components/core/Component.js';
 import Content from '../../../components/content/content.js';
 import * as api from '../../../public/api.js';
 import { RegEx, isEmpty } from '../../../public/util.js';
 import { icons } from '../../../public/icons.js';
-import ErrorModal from '../../../components/common/ErrorModal.js';
+import showErrorModal from '../../../components/common/ErrorModal.js';
 
 export default class CreateWrapper extends Content {
   mounted() {
@@ -196,14 +196,6 @@ const renderSuccess = ({ name, manager }) => {
   const container = document.querySelector('.create-wrapper');
 
   container.innerHTML = success(name, manager);
-};
-
-const showErrorModal = (error) => {
-  const errorModalContainer = document.querySelector('.error-modal-container');
-  new ErrorModal(errorModalContainer, error.message);
-  errorModalContainer.style.zIndex = '2';
-  errorModalContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
-  document.querySelector('.error-close').focus();
 };
 
 /* HTML Forms */
