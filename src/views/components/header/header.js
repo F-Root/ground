@@ -210,7 +210,13 @@ export default class Header extends Component {
   }
 }
 
-/* Functions */
+/**
+ * Performs a search for grounds by keyword and displays the results with a loading spinner.
+ *
+ * Ensures the loading spinner is visible for at least 500ms before rendering results or an error message.
+ *
+ * @param {string} keyword - The search term to query for grounds.
+ */
 
 async function handleSearch(keyword) {
   const wrapper = document.querySelector('.search-box-wrapper');

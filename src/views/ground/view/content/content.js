@@ -506,7 +506,16 @@ class ViewForm extends Component {
   }
 }
 
-/* Functions */
+/**
+ * Sets focus on a specific comment or reply, updating pagination or rendering as needed.
+ *
+ * If focusing a comment, navigates to the appropriate comment page and scrolls to the comment section. If focusing a reply, fetches and renders the relevant replies for the comment, then highlights the new reply.
+ *
+ * @param {Object} params - Focus context.
+ * @param {Object} params.position - Position information for the comment or reply.
+ * @param {'comment'|'reply'} params.type - Indicates whether to focus a comment or a reply.
+ * @param {string} params.url - Reply identifier (used when focusing a reply).
+ */
 
 async function setCommentFocus({ position, type, url }) {
   //댓글인지 대댓글인지 확인

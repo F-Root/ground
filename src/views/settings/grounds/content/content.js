@@ -210,7 +210,13 @@ const getSubscribesInfo = async () => {
 };
 
 /* drag event FLIP animation */
-// FLIP 애니메이션을 위한 함수: DOM 순서 변경 후 각 row의 이동을 부드럽게 보이게 함.
+/**
+ * Animates the vertical movement of rows in the subscription list to smoothly reflect DOM reordering.
+ *
+ * Applies a FLIP (First, Last, Invert, Play) animation to each row based on its previous and new position, creating a seamless transition effect after the list order changes.
+ *
+ * @param {Map<Element, DOMRect>} oldPositions - A map of row elements to their previous bounding rectangles before reordering.
+ */
 function animateRows(oldPositions) {
   const list = document.querySelector('.subscribes-list');
   // 변경된 후 각 row의 새로운 위치 측정

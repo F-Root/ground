@@ -71,6 +71,11 @@ const getUserInfo = async () => {
   return await api.get({ endPoint: '/user/loggedUser' });
 };
 
+/**
+ * Handles profile form submission, validating inputs and updating user profile data.
+ *
+ * Prevents default form submission, validates each input field, updates input styles based on validation, and submits the form data to update the user's profile if all inputs are valid. Displays a success modal on successful update or an error modal if the update fails.
+ */
 async function handleSubmit(event) {
   event.preventDefault();
   const formData = new FormData(document.querySelector('.profile-form'));
