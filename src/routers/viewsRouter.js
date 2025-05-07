@@ -33,14 +33,10 @@ viewsRouter.use('/', serveStatic('main', 'main'));
 
 viewsRouter.use(
   '/signin',
-  tokenCheck,
-  signInCheck,
   serveStatic('signin', 'signin', setHeadersDisableCache)
 );
 viewsRouter.use(
   '/signup',
-  tokenCheck,
-  signInCheck,
   serveStatic('signup', 'signup', setHeadersDisableCache)
 );
 viewsRouter.get('/settings', tokenCheck, signInCheck, (req, res) => {

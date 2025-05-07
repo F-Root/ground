@@ -51,8 +51,7 @@ export default class Header extends Component {
           {
             message: '에러가 발생했습니다. 관리자에게 문의해 주세요.',
           },
-          '.header-error-modal',
-          '15'
+          '.header-error-modal'
         );
       }
     });
@@ -351,8 +350,7 @@ const socketConnection = (state) => {
       {
         message: '에러가 발생했습니다. 관리자에게 문의해 주세요.',
       },
-      '.header-error-modal',
-      '15'
+      '.header-error-modal'
     );
   });
 
@@ -375,8 +373,7 @@ const renewCookie = async (state) => {
       {
         message: '에러가 발생했습니다. 관리자에게 문의해 주세요.',
       },
-      '.header-error-modal',
-      '15'
+      '.header-error-modal'
     );
   }
 };
@@ -455,8 +452,7 @@ const getLink = async ({ type, id, contentUrl, commentUrl }) => {
       {
         message: '에러가 발생했습니다. 관리자에게 문의해 주세요.',
       },
-      '.header-error-modal',
-      '15'
+      '.header-error-modal'
     );
   }
 };

@@ -3,7 +3,7 @@ import { getImgSASUrl } from '../utils/index.js';
 
 const imgSASUrlGenerator = async (req, res, next) => {
   const img = req.file;
-  const imgInfo = !isNull(img) ? await getImgSASUrl(img) : null;
+  const imgInfo = !isNull(img) ? await getImgSASUrl(img) : {};
   req.body.imgInfo = imgInfo;
   next();
 };

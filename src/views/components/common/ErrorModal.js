@@ -21,14 +21,10 @@ class ErrorModal extends Component {
   }
 }
 
-const showErrorModal = (
-  error,
-  element = '.error-modal-container',
-  zIndex = '4'
-) => {
+const showErrorModal = (error, element = '.error-modal-container') => {
   const errorModalContainer = document.querySelector(element);
   new ErrorModal(errorModalContainer, error.message);
-  errorModalContainer.style.zIndex = zIndex;
+  errorModalContainer.style.zIndex = '15';
   errorModalContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
   document.querySelector('.error-close').focus();
 };
