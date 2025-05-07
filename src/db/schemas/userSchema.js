@@ -87,7 +87,7 @@ const UserSchema = new Schema(
     /* 프로필 업데이트 전용 */
     // 마지막 업데이트 이후 30일이 지났는지 확인하기 위해
     // 자동으로 생성되는 updatedAt 대신 개별 관리하는 필드 사용
-    profileUpdatedAt: { type: Date, default: Date.now },
+    profileUpdatedAt: { type: Date },
   },
   {
     collection: 'users',
