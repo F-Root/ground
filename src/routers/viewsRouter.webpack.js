@@ -35,14 +35,10 @@ viewsRouterWebpack.use('/', serveStatic('main', 'main'));
 
 viewsRouterWebpack.use(
   '/signin',
-  tokenCheck,
-  signInCheck,
   serveStatic('signin', 'signin', setHeadersDisableCache)
 );
 viewsRouterWebpack.use(
   '/signup',
-  tokenCheck,
-  signInCheck,
   serveStatic('signup', 'signup', setHeadersDisableCache)
 );
 viewsRouterWebpack.get('/settings', tokenCheck, signInCheck, (req, res) => {
