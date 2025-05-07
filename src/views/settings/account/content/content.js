@@ -66,7 +66,7 @@ class AccountForm extends Component {
         showLoadingModal('이메일 발송중...');
         const { sendMail } = await api.post({
           endPoint: '/user/email',
-          data: { email, authNumber: this.#authNumber },
+          data: Object.freeze({ email, authNumber: this.#authNumber }),
         });
         if (sendMail === 'succeed') {
           document.querySelector('.loading-spinner').remove();
