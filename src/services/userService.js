@@ -187,12 +187,19 @@ class UserService {
   }
 
   async setGroundNotificate(groundId, email) {
+    const sort = ['best']; //개념글 알림
     const { _id: ground } =
       await groundService.getGroundInfoByGroundId(groundId);
-    return await this.userModel.updateGroundNotificate({
+    await this.userModel.updateGroundNotificate({
       email,
       ground,
       action: '$push',
+    });
+    // 알림 설정 후 기본으로 개념글 알림 설정
+    return await this.userModel.setDefaultNotificate({
+      email,
+      ground,
+      sort,
     });
   }
 

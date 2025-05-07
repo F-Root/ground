@@ -107,6 +107,13 @@ class UserModel {
       { new: true, runValidators: true }
     );
   }
+  async setDefaultNotificate({ email, ground, sort }) {
+    return await User.findOneAndUpdate(
+      { email, 'notifications.content.ground': ground },
+      { $set: { 'notifications.content.$.sort': sort } },
+      { new: true, runValidators: true }
+    );
+  }
   async updateGroundSubscribe({ email, ground, action }) {
     return await User.findOneAndUpdate(
       { email },
