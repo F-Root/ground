@@ -81,10 +81,13 @@ class GroundService {
   }
 
   async getGroundsByKeyword(keyword) {
-    // 한글 검색어일 경우 자음 모음을 분리
-    keyword = Hangul.toString(keyword);
-    const regexp = buildRegex(keyword);
-    return await this.groundModel.findByKeywordRegexp(regexp);
+    if (keyword) {
+      // 한글 검색어일 경우 자음 모음을 분리
+      keyword = Hangul.toString(keyword);
+      const regexp = buildRegex(keyword);
+      return await this.groundModel.findByKeywordRegexp(regexp);
+    }
+    return [];
   }
 
   async getGroundNameAndManager(ground) {
