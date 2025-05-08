@@ -27,7 +27,7 @@ const groundName = Joi.object({
     .required(),
 });
 
-const keyword = Joi.object({ keyword: Joi.string().min(0).required() });
+const keyword = Joi.object({ keyword: Joi.string().min(0) });
 
 const updateImg = Joi.object({
   id: Joi.string().alphanum().required(),
