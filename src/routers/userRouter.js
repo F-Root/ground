@@ -95,7 +95,6 @@ userRouter.post(
 // mailer
 userRouter.post(
   '/email',
-  tokenCheck,
   validateRequestWith(JoiSchema.authEmail, 'body'),
   async (req, res, next) => {
     const { email, authNumber } = req.body;
@@ -108,27 +107,31 @@ userRouter.post(
   }
 );
 
-userRouter.get('/signUp/available', async (req, res, next) => {
-  const { email, id } = req.query;
-  try {
-    if (email) {
-      const available = await userService.checkDuplicate({ email });
-      return res.status(200).json({ available });
+userRouter.get(
+  '/signUp/available',
+  validateRequestWith(JoiSchema.signUpAvailable, 'query'),
+  async (req, res, next) => {
+    const { email, id } = req.query;
+    try {
+      if (email) {
+        const available = await userService.checkDuplicate({ email });
+        return res.status(200).json({ available });
+      }
+      if (id) {
+        const available = await userService.checkDuplicate({ id });
+        return res.status(200).json({ available });
+      }
+    } catch (error) {
+      next(
+        new AppError(
+          'ServerError',
+          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          500
+        )
+      );
     }
-    if (id) {
-      const available = await userService.checkDuplicate({ id });
-      return res.status(200).json({ available });
-    }
-  } catch (error) {
-    next(
-      new AppError(
-        'ServerError',
-        '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
-        500
-      )
-    );
   }
-});
+);
 
 // ground manager setting (ground update)
 userRouter.get('/exist', tokenCheck, async (req, res, next) => {
@@ -263,6 +266,7 @@ userRouter.get('/notificate/grounds', tokenCheck, async (req, res, next) => {
 userRouter.get(
   '/check/notificate/:groundId',
   tokenCheck,
+  validateRequestWith(JoiSchema.groundId, 'params'),
   async (req, res, next) => {
     const { groundId } = req.params;
     const email = req.currentUser;
@@ -289,6 +293,7 @@ userRouter.get(
 userRouter.get(
   '/check/subscribe/:groundId',
   tokenCheck,
+  validateRequestWith(JoiSchema.groundId, 'params'),
   async (req, res, next) => {
     const { groundId } = req.params;
     const email = req.currentUser;
@@ -312,42 +317,52 @@ userRouter.get(
   }
 );
 
-userRouter.get('/notificate/:groundId', tokenCheck, async (req, res, next) => {
-  const { groundId } = req.params;
-  try {
-    const notificate = await userService.getGroundnotificateCount(groundId);
-    res.status(200).json(notificate);
-  } catch (error) {
-    next(
-      new AppError(
-        'ServerError',
-        '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
-        500
-      )
-    );
+userRouter.get(
+  '/notificate/:groundId',
+  tokenCheck,
+  validateRequestWith(JoiSchema.groundId, 'params'),
+  async (req, res, next) => {
+    const { groundId } = req.params;
+    try {
+      const notificate = await userService.getGroundnotificateCount(groundId);
+      res.status(200).json(notificate);
+    } catch (error) {
+      next(
+        new AppError(
+          'ServerError',
+          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          500
+        )
+      );
+    }
   }
-});
+);
 
-userRouter.get('/subscribers/:groundId', tokenCheck, async (req, res, next) => {
-  const { groundId } = req.params;
-  try {
-    const subscribers = await userService.getGroundSubscribeCount(groundId);
-    res.status(200).json(subscribers);
-  } catch (error) {
-    next(
-      new AppError(
-        'ServerError',
-        '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
-        500
-      )
-    );
+userRouter.get(
+  '/subscribers/:groundId',
+  tokenCheck,
+  validateRequestWith(JoiSchema.groundId, 'params'),
+  async (req, res, next) => {
+    const { groundId } = req.params;
+    try {
+      const subscribers = await userService.getGroundSubscribeCount(groundId);
+      res.status(200).json(subscribers);
+    } catch (error) {
+      next(
+        new AppError(
+          'ServerError',
+          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          500
+        )
+      );
+    }
   }
-});
+);
 
 userRouter.put(
   '/email',
-  validateRequestWith(JoiSchema.updateEmail, 'body'),
   tokenCheck,
+  validateRequestWith(JoiSchema.updateEmail, 'body'),
   async (req, res, next) => {
     const emailNow = req.currentUser;
     const { email } = req.body;
@@ -366,58 +381,68 @@ userRouter.put(
   }
 );
 
-userRouter.put('/password', tokenCheck, async (req, res, next) => {
-  const email = req.currentUser;
-  const {
-    'password-now': passwordNow,
-    'password-new': passwordNew,
-    'password-check': passwordCheck,
-  } = req.body;
+userRouter.put(
+  '/password',
+  tokenCheck,
+  validateRequestWith(JoiSchema.updatePassword, 'body'),
+  async (req, res, next) => {
+    const email = req.currentUser;
+    const {
+      'password-now': passwordNow,
+      'password-new': passwordNew,
+      'password-check': passwordCheck,
+    } = req.body;
 
-  try {
-    await userService.checkPassword({
-      email,
-      passwordNow,
-      passwordNew,
-      passwordCheck,
-    });
-    await userService.updatePassword({ email, passwordNew });
+    try {
+      await userService.checkPassword({
+        email,
+        passwordNow,
+        passwordNew,
+        passwordCheck,
+      });
+      await userService.updatePassword({ email, passwordNew });
 
-    res.status(200).json({ updatePassword: 'succeed' });
-  } catch (error) {
-    if (
-      error.name.includes('PasswordNewError') ||
-      error.name.includes('PasswordNowError') ||
-      error.name.includes('PasswordUpdateError')
-    ) {
-      return next(error);
+      res.status(200).json({ updatePassword: 'succeed' });
+    } catch (error) {
+      if (
+        error.name.includes('PasswordNewError') ||
+        error.name.includes('PasswordNowError') ||
+        error.name.includes('PasswordUpdateError')
+      ) {
+        return next(error);
+      }
+      next(
+        new AppError(
+          'ServerError',
+          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          500
+        )
+      );
     }
-    next(
-      new AppError(
-        'ServerError',
-        '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
-        500
-      )
-    );
   }
-});
+);
 
-userRouter.put('/subscribes', tokenCheck, async (req, res, next) => {
-  const email = req.currentUser;
-  const subscribeList = req.body;
-  try {
-    await userService.updateSubscribeList(email, subscribeList);
-    res.status(200).json({ updateSubscribeList: 'succeed' });
-  } catch (error) {
-    next(
-      new AppError(
-        'ServerError',
-        '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
-        500
-      )
-    );
+userRouter.put(
+  '/subscribes',
+  tokenCheck,
+  validateRequestWith(JoiSchema.updateSubscribeList, 'body'),
+  async (req, res, next) => {
+    const email = req.currentUser;
+    const subscribeList = req.body;
+    try {
+      await userService.updateSubscribeList(email, subscribeList);
+      res.status(200).json({ updateSubscribeList: 'succeed' });
+    } catch (error) {
+      next(
+        new AppError(
+          'ServerError',
+          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          500
+        )
+      );
+    }
   }
-});
+);
 
 userRouter.patch(
   '/update',
@@ -425,6 +450,7 @@ userRouter.patch(
   checkLastProfileUpdate,
   upload.single('img'),
   imgSASUrlGenerator,
+  validateRequestWith(JoiSchema.updateProfile, 'body'),
   async (req, res, next) => {
     const { imgInfo, nickname } = req.body;
     const email = req.currentUser;
@@ -450,6 +476,8 @@ userRouter.patch(
 userRouter.patch(
   '/notificate/:groundId',
   tokenCheck,
+  validateRequestWith(JoiSchema.groundId, 'params'),
+  validateRequestWith(JoiSchema.clickForNotificate, 'query'),
   async (req, res, next) => {
     const email = req.currentUser;
     const { groundId } = req.params;
@@ -465,6 +493,7 @@ userRouter.patch(
       }
       res.status(200).json(data);
     } catch (error) {
+      console.error(error);
       next(
         new AppError(
           'ServerError',
@@ -476,64 +505,80 @@ userRouter.patch(
   }
 );
 
-userRouter.patch('/subscribe/:groundId', tokenCheck, async (req, res, next) => {
-  const email = req.currentUser;
-  const { groundId } = req.params;
-  const { clickForSubscribe } = req.query;
-  let data;
-  try {
-    if (JSON.parse(clickForSubscribe)) {
-      await userService.setGroundSubscribe(groundId, email);
-      data = 'yes';
-    } else {
-      await userService.unsetGroundSubscribe(groundId, email);
-      data = 'no';
+userRouter.patch(
+  '/subscribe/:groundId',
+  tokenCheck,
+  validateRequestWith(JoiSchema.groundId, 'params'),
+  validateRequestWith(JoiSchema.clickForSubscribe, 'query'),
+  async (req, res, next) => {
+    const email = req.currentUser;
+    const { groundId } = req.params;
+    const { clickForSubscribe } = req.query;
+    let data;
+    try {
+      if (JSON.parse(clickForSubscribe)) {
+        await userService.setGroundSubscribe(groundId, email);
+        data = 'yes';
+      } else {
+        await userService.unsetGroundSubscribe(groundId, email);
+        data = 'no';
+      }
+      res.status(200).json(data);
+    } catch (error) {
+      next(
+        new AppError(
+          'ServerError',
+          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          500
+        )
+      );
     }
-    res.status(200).json(data);
-  } catch (error) {
-    next(
-      new AppError(
-        'ServerError',
-        '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
-        500
-      )
-    );
   }
-});
+);
 
-userRouter.patch('/comment/notificate', tokenCheck, async (req, res, next) => {
-  const email = req.currentUser;
-  const { comment, reply } = req.body;
-  try {
-    await userService.updateCommentNotificate({ email, comment, reply });
-    res.status(200).json({ update: 'succeed' });
-  } catch (error) {
-    next(
-      new AppError(
-        'ServerError',
-        '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
-        500
-      )
-    );
+userRouter.patch(
+  '/comment/notificate',
+  tokenCheck,
+  validateRequestWith(JoiSchema.updateCommentNotificate, 'body'),
+  async (req, res, next) => {
+    const email = req.currentUser;
+    const { comment, reply } = req.body;
+    try {
+      await userService.updateCommentNotificate({ email, comment, reply });
+      res.status(200).json({ update: 'succeed' });
+    } catch (error) {
+      next(
+        new AppError(
+          'ServerError',
+          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          500
+        )
+      );
+    }
   }
-});
+);
 
-userRouter.patch('/notification', tokenCheck, async (req, res, next) => {
-  const email = req.currentUser;
-  const data = req.body;
-  try {
-    await userService.updateNotification({ email, data });
-    res.status(200).json({ update: 'succeed' });
-  } catch (error) {
-    next(
-      new AppError(
-        'ServerError',
-        '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
-        500
-      )
-    );
+userRouter.patch(
+  '/notification',
+  tokenCheck,
+  validateRequestWith(JoiSchema.updateNotification, 'body'),
+  async (req, res, next) => {
+    const email = req.currentUser;
+    const data = req.body;
+    try {
+      await userService.updateNotification({ email, data });
+      res.status(200).json({ update: 'succeed' });
+    } catch (error) {
+      next(
+        new AppError(
+          'ServerError',
+          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          500
+        )
+      );
+    }
   }
-});
+);
 
 userRouter.delete('/', async () => {});
 

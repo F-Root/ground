@@ -8,4 +8,8 @@ const groundInfo = Joi.object({
   id: Joi.string().alphanum().required(),
 });
 
-export { groundInfo };
+const groundId = Joi.object({
+  groundId: Joi.string().alphanum().required(),
+});
+
+export { groundInfo, groundId };
