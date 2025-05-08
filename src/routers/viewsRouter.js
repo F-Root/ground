@@ -90,15 +90,15 @@ viewsRouter.use(
   '/ground/:ground',
   serveStatic('/ground/board', 'board', setHeadersDisableCache)
 );
-viewsRouter.use(
-  '/ground/:ground/:id',
-  serveStatic('/ground/view', 'view', setHeadersDisableCache)
-);
 
 // post views (editor)
 viewsRouter.use(
   '/ground/:ground/new',
   serveStatic('/post/new', 'new', setHeadersDisableCache)
+);
+viewsRouter.use(
+  '/ground/:ground/:id',
+  serveStatic('/ground/view', 'view', setHeadersDisableCache)
 );
 
 export { viewsRouter };

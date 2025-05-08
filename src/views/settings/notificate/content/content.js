@@ -90,30 +90,28 @@ class NotificateForm extends Component {
         showErrorModal(error);
       }
     });
+    //알림선택(개념글)
     this.addEvent('click', '.notificate-best', (event) => {
       const checkbox = event.target.closest('.notificate-best');
+      const choicebox = event.target.closest('.sub-col-2');
       if (checkbox.checked) {
         checkNotificate(checkbox);
       } else {
         unCheckNotificate(checkbox);
+        //전체글 체크 되어있는지 확인
+        const allBox = choicebox.querySelector('.notificate-all');
+        if (!allBox.checked) {
+          allBox.checked = true;
+          checkAllContentNotificate(choicebox, allBox);
+        }
       }
     });
+    //알림선택(전체글)
     this.addEvent('click', '.notificate-all', (event) => {
       const checkbox = event.target.closest('.notificate-all');
       const choicebox = event.target.closest('.sub-col-2');
       if (checkbox.checked) {
-        checkNotificate(checkbox);
-        // 전체글 클릭 시 tablist 생성
-        choicebox.querySelector('.tab-list-wrapper').style.display = 'block';
-        // 전체탭만 check 활성화
-        Array.from(choicebox.getElementsByClassName('notificate-tab')).forEach(
-          (tab) => {
-            if (tab.value === '전체' && tab.checked === false) {
-              checkNotificate(tab);
-              tab.checked = true;
-            }
-          }
-        );
+        checkAllContentNotificate(choicebox, checkbox);
       } else {
         unCheckNotificate(checkbox);
         // 전체글 클릭 시 tablist 제거
@@ -125,8 +123,15 @@ class NotificateForm extends Component {
             tab.checked = false;
           }
         );
+        // 개념글 체크 되어있는지 확인
+        const bestBox = choicebox.querySelector('.notificate-best');
+        if (!bestBox.checked) {
+          bestBox.checked = true;
+          checkNotificate(bestBox);
+        }
       }
     });
+    //알림선택(전체글->탭)
     this.addEvent('click', '.notificate-tab', (event) => {
       const checkbox = event.target.closest('.notificate-tab');
       if (checkbox.checked) {
@@ -137,6 +142,7 @@ class NotificateForm extends Component {
         unCheckTabList(checkbox);
       }
     });
+    //알림취소
     this.addEvent('click', '.notificate-cancel', (event) => {
       event.preventDefault();
       const cancelButton = event.target.closest('.notificate-cancel');
@@ -175,6 +181,21 @@ const unCheckNotificate = (checkbox) => {
   const label = document.querySelector(`label[for="${checkbox.id}"]`);
   label.classList.remove('notificate-checked');
   label.querySelector('svg')?.remove();
+};
+
+const checkAllContentNotificate = (choicebox, checkbox) => {
+  checkNotificate(checkbox);
+  // 전체글 클릭 시 tablist 생성
+  choicebox.querySelector('.tab-list-wrapper').style.display = 'block';
+  // 전체탭만 check 활성화
+  Array.from(choicebox.getElementsByClassName('notificate-tab')).forEach(
+    (tab) => {
+      if (tab.value === '전체' && tab.checked === false) {
+        checkNotificate(tab);
+        tab.checked = true;
+      }
+    }
+  );
 };
 
 const checkTabList = (checkbox) => {
@@ -360,24 +381,14 @@ const createTabListBox = ({ id, tab, tablist }) => {
           class="noti-checkboxes notificate-tab"
           data-id="${id}"
           value="${tabNow}"
-          ${isEmpty(tab) && tabNow === '전체'
-            ? 'checked'
-            : tab.includes(tabNow)
-            ? 'checked'
-            : ''}
+          ${tab.includes(tabNow) ? 'checked' : ''}
         />
         <label
           for="notificate-${id}-${encodeURIComponent(tabNow)}"
-          class="check-button tabs ${isEmpty(tab) && tabNow === '전체'
-            ? 'notificate-checked'
-            : tab.includes(tabNow)
+          class="check-button tabs ${tab.includes(tabNow)
             ? 'notificate-checked'
             : ''}"
-          >${isEmpty(tab) && tabNow === '전체'
-            ? icons.check
-            : tab.includes(tabNow)
-            ? icons.check
-            : ''}${tabNow}</label
+          >${tabNow}</label
         >
       </li>`),
     ''
