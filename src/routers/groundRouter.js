@@ -35,7 +35,7 @@ groundRouter.post(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
       );
@@ -57,7 +57,7 @@ groundRouter.get(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
       );
@@ -84,7 +84,7 @@ groundRouter.get(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
       );
@@ -112,7 +112,7 @@ groundRouter.get(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
       );
@@ -129,7 +129,7 @@ groundRouter.get('/info/managing', tokenCheck, async (req, res, next) => {
     next(
       new AppError(
         'ServerError',
-        '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+        '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
         500
       )
     );
@@ -155,7 +155,7 @@ groundRouter.patch(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
       );
@@ -176,7 +176,7 @@ groundRouter.patch(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
       );
@@ -201,7 +201,7 @@ groundRouter.patch(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
       );
@@ -226,7 +226,7 @@ groundRouter.patch(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
       );
@@ -247,7 +247,7 @@ groundRouter.patch(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
       );

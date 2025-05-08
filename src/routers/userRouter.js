@@ -42,7 +42,7 @@ userRouter.post(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
         // new AppError(error.name, error.message)
@@ -75,7 +75,7 @@ userRouter.post(
         next(
           new AppError(
             'SignUpFailed',
-            '회원가입에 실패하였습니다. 서버 관리자에게 문의하십시오.',
+            '회원가입에 실패하였습니다.\n서버 관리자에게 문의하십시오.',
             500
           )
         );
@@ -84,7 +84,7 @@ userRouter.post(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
       );
@@ -125,7 +125,7 @@ userRouter.get(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
       );
@@ -143,7 +143,7 @@ userRouter.get('/exist', tokenCheck, async (req, res, next) => {
     next(
       new AppError(
         'ServerError',
-        '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+        '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
         500
       )
     );
@@ -165,7 +165,7 @@ userRouter.get('/signCheck', async (req, res, next) => {
     next(
       new AppError(
         'ServerError',
-        '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+        '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
         500
       )
     );
@@ -183,7 +183,7 @@ userRouter.get('/loggedUser', tokenCheck, async (req, res, next) => {
     next(
       new AppError(
         'ServerError',
-        '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+        '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
         500
       )
     );
@@ -204,7 +204,7 @@ userRouter.get('/signOut', tokenCheck, signInCheck, async (req, res, next) => {
     next(
       new AppError(
         'ServerError',
-        '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+        '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
         500
       )
     );
@@ -220,7 +220,7 @@ userRouter.get('/info', tokenCheck, async (req, res, next) => {
     next(
       new AppError(
         'ServerError',
-        '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+        '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
         500
       )
     );
@@ -237,7 +237,7 @@ userRouter.get('/subscribe/grounds', tokenCheck, async (req, res, next) => {
     next(
       new AppError(
         'ServerError',
-        '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+        '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
         500
       )
     );
@@ -256,7 +256,7 @@ userRouter.get('/notificate/grounds', tokenCheck, async (req, res, next) => {
     next(
       new AppError(
         'ServerError',
-        '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+        '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
         500
       )
     );
@@ -282,7 +282,7 @@ userRouter.get(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
       );
@@ -309,7 +309,7 @@ userRouter.get(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
       );
@@ -330,7 +330,7 @@ userRouter.get(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
       );
@@ -351,7 +351,7 @@ userRouter.get(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
       );
@@ -373,7 +373,7 @@ userRouter.put(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
       );
@@ -414,7 +414,7 @@ userRouter.put(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
       );
@@ -436,7 +436,7 @@ userRouter.put(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
       );
@@ -465,7 +465,7 @@ userRouter.patch(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
       );
@@ -497,7 +497,7 @@ userRouter.patch(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
       );
@@ -528,7 +528,7 @@ userRouter.patch(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
       );
@@ -550,7 +550,7 @@ userRouter.patch(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
       );
@@ -572,7 +572,7 @@ userRouter.patch(
       next(
         new AppError(
           'ServerError',
-          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          '알 수 없는 에러가 발생하였습니다.\n서버 관리자에게 문의하십시오.',
           500
         )
       );
