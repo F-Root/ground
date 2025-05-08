@@ -98,12 +98,6 @@ viewsRouterWebpack.use(
   signInCheck,
   serveStatic('/ground/board', 'ground.board', setHeadersDisableCache)
 );
-viewsRouterWebpack.use(
-  '/ground/:ground/:id',
-  tokenCheck,
-  signInCheck,
-  serveStatic('/ground/view', 'ground.view', setHeadersDisableCache)
-);
 
 // post views (editor)
 viewsRouterWebpack.use(
@@ -111,6 +105,12 @@ viewsRouterWebpack.use(
   tokenCheck,
   signInCheck,
   serveStatic('/post/new', 'post.new', setHeadersDisableCache)
+);
+viewsRouterWebpack.use(
+  '/ground/:ground/:id',
+  tokenCheck,
+  signInCheck,
+  serveStatic('/ground/view', 'ground.view', setHeadersDisableCache)
 );
 
 export { viewsRouterWebpack };
