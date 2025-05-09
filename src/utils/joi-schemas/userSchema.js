@@ -103,9 +103,9 @@ const updateNotification = Joi.object().pattern(
       canceled: Joi.forbidden(),
       sort: Joi.alternatives()
         .try(
-          Joi.array().items(Joi.string().valid('best')).length(1),
-          Joi.array().items(Joi.string().valid('all')).length(1),
-          Joi.array()
+          Joi.array().items(Joi.string().valid('best')).length(1), // ['best']
+          Joi.array().items(Joi.string().valid('all')).length(1), // ['all']
+          Joi.array() // ['best', 'all'] 또는 ['all', 'best']
             .items(Joi.string().valid('best', 'all'))
             .min(2)
             .max(2)
