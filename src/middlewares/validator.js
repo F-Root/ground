@@ -3,8 +3,9 @@ import { AppError } from './index.js';
 const validateRequestWith = (schema, paramLocation) => {
   return async (req, res, next) => {
     try {
-      const validateData = parseJSONProperties(req[paramLocation]);
-      await schema.validateAsync(validateData);
+      // 라우터에서도 파싱된 데이터를 사용하도록 업데이트
+      req[paramLocation] = parseJSONProperties(req[paramLocation]);
+      await schema.validateAsync(req[paramLocation]);
       next();
     } catch (error) {
       // throw new Error(error.message);
@@ -22,12 +23,13 @@ const validateRequestWith = (schema, paramLocation) => {
 
 /**
  * 객체 내의 문자열화된 JSON 속성을 파싱하는 함수
- * 객체의 각 속성값 중 JSON.stringify로 문자열화된 객체나 배열을 찾아 파싱한다.
+ * 객체의 각 속성값 중 JSON.stringify로 문자열화된 객체나 배열,
+ * 그리고 'true'/'false' 문자열을 찾아 파싱한다.
  *
  * @param {Object} data - 처리할 객체
  * @param {Object} options - 옵션
  * @param {boolean} options.deep - 중첩된 객체도 처리할지 여부 (기본값: true)
- * @param {Array<string>} options.only - 특정 속성만 처리하려는 경우 속성명 배열
+ * @param {Array<string>} options.only - 특정 속성만 처리하려는 경우 속성명 배열 지정
  * @returns {Object} - 파싱된 객체
  */
 function parseJSONProperties(data, options = {}) {
@@ -37,8 +39,6 @@ function parseJSONProperties(data, options = {}) {
   }
 
   // 기본 옵션 설정
-  // deep: 중첩된 객체도 처리할지 여부
-  // only: 특정 속성만 처리하려는 경우 속성명 배열 지정
   const { deep = true, only = null } = options;
 
   // 결과 객체 (원본 복사)
@@ -57,9 +57,12 @@ function parseJSONProperties(data, options = {}) {
     if (typeof value === 'string') {
       try {
         const parsed = JSON.parse(value);
-
-        // 파싱 결과가 객체나 배열인 경우만 교체
-        if (parsed !== null && typeof parsed === 'object') {
+        // 파싱 결과가 객체나 배열 또는 boolean인 경우만 교체
+        if (
+          parsed !== null &&
+          ['object', 'boolean'].includes(typeof parsed)
+          // (typeof parsed === 'object' || typeof parsed === 'boolean')
+        ) {
           result[key] = parsed;
         }
       } catch (e) {

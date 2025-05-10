@@ -42,11 +42,12 @@ contentRouter.get(
   '',
   validateRequestWith(JoiSchema.grounds, 'query'),
   async (req, res, next) => {
-    const grounds = JSON.parse(decodeURIComponent(req.query.grounds));
+    const { grounds } = req.query;
     try {
       const contents = await contentService.getContentsByGrounds(grounds);
       res.status(200).json(contents);
     } catch (error) {
+      console.error(error);
       next(
         new AppError(
           'serverError',
