@@ -76,7 +76,7 @@ contentRouter.get(
         url,
         createdAt,
       } = await contentService.getContentByContentUrl(contentUrl);
-      res.status(201).json({
+      res.status(200).json({
         title,
         tab,
         content,
@@ -111,7 +111,7 @@ contentRouter.get(
         groundId,
         category
       );
-      res.status(201).json(count);
+      res.status(200).json(count);
     } catch (error) {
       next(
         new AppError(
@@ -137,7 +137,7 @@ contentRouter.get(
         category,
         page
       );
-      res.status(201).json({
+      res.status(200).json({
         contents,
         category: category === undefined ? '전체' : category,
         page: page === undefined ? 1 : page,
