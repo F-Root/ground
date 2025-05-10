@@ -8,8 +8,10 @@ const validateRequestWith = (schema, paramLocation) => {
       await schema.validateAsync(req[paramLocation]);
       next();
     } catch (error) {
-      // throw new Error(error.message);
-      console.error(error);
+      // check Joi Validation Error 여부 확인
+      if (error.isJoi) {
+        return next(new AppError(error.name, error.message, 400));
+      }
       next(
         new AppError(
           'ServerError',
