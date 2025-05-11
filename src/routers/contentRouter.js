@@ -16,7 +16,17 @@ contentRouter.post(
   async (req, res, next) => {
     const { category, title, content, groundId } = req.body;
     const email = req.currentUser;
+    // let url = '';
     try {
+      // for (let i = 0; i < 20; i++) {
+      //   await contentService.addContent({
+      //     category,
+      //     title: title + i,
+      //     content: content,
+      //     email,
+      //     groundId,
+      //   });
+      // }
       const { url } = await contentService.addContent({
         category,
         title,
@@ -143,7 +153,13 @@ contentRouter.get(
         page: page === undefined ? 1 : page,
       });
     } catch (error) {
-      next(error);
+      next(
+        new AppError(
+          'serverError',
+          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          500
+        )
+      );
     }
   }
 );
