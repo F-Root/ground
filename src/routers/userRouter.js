@@ -484,7 +484,7 @@ userRouter.patch(
     const { clickForNotificate } = req.query;
     let data;
     try {
-      if (JSON.parse(clickForNotificate)) {
+      if (clickForNotificate) {
         await userService.setGroundNotificate(groundId, email);
         data = 'yes';
       } else {
@@ -493,7 +493,6 @@ userRouter.patch(
       }
       res.status(200).json(data);
     } catch (error) {
-      console.error(error);
       next(
         new AppError(
           'ServerError',
@@ -516,7 +515,7 @@ userRouter.patch(
     const { clickForSubscribe } = req.query;
     let data;
     try {
-      if (JSON.parse(clickForSubscribe)) {
+      if (clickForSubscribe) {
         await userService.setGroundSubscribe(groundId, email);
         data = 'yes';
       } else {

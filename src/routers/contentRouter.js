@@ -16,7 +16,17 @@ contentRouter.post(
   async (req, res, next) => {
     const { category, title, content, groundId } = req.body;
     const email = req.currentUser;
+    // let url = '';
     try {
+      // for (let i = 0; i < 20; i++) {
+      //   await contentService.addContent({
+      //     category,
+      //     title: title + i,
+      //     content: content,
+      //     email,
+      //     groundId,
+      //   });
+      // }
       const { url } = await contentService.addContent({
         category,
         title,
@@ -42,11 +52,12 @@ contentRouter.get(
   '',
   validateRequestWith(JoiSchema.grounds, 'query'),
   async (req, res, next) => {
-    const grounds = JSON.parse(decodeURIComponent(req.query.grounds));
+    const { grounds } = req.query;
     try {
       const contents = await contentService.getContentsByGrounds(grounds);
       res.status(200).json(contents);
     } catch (error) {
+      console.error(error);
       next(
         new AppError(
           'serverError',
@@ -75,7 +86,7 @@ contentRouter.get(
         url,
         createdAt,
       } = await contentService.getContentByContentUrl(contentUrl);
-      res.status(201).json({
+      res.status(200).json({
         title,
         tab,
         content,
@@ -110,7 +121,7 @@ contentRouter.get(
         groundId,
         category
       );
-      res.status(201).json(count);
+      res.status(200).json(count);
     } catch (error) {
       next(
         new AppError(
@@ -136,13 +147,19 @@ contentRouter.get(
         category,
         page
       );
-      res.status(201).json({
+      res.status(200).json({
         contents,
         category: category === undefined ? '전체' : category,
         page: page === undefined ? 1 : page,
       });
     } catch (error) {
-      next(error);
+      next(
+        new AppError(
+          'serverError',
+          '알 수 없는 에러가 발생하였습니다. 서버 관리자에게 문의하십시오.',
+          500
+        )
+      );
     }
   }
 );

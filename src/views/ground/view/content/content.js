@@ -4,7 +4,12 @@ import { observable, observe } from '../../../components/core/observer.js';
 import * as api from '../../../public/api.js';
 import { icons } from '../../../public/icons.js';
 import Quill from 'quill';
-import { isEmpty, isNull } from '../../../public/util.js';
+import {
+  isEmpty,
+  isNull,
+  parseQueryStringToObj,
+  createQueryStringByObj,
+} from '../../../public/util.js';
 import showErrorModal from '../../../components/common/ErrorModal.js';
 import ErrorPage from '../../../components/common/errorPage.js';
 
@@ -575,7 +580,8 @@ const getNumberOfContents = async () => {
   const urlPath = location.pathname.split('/').filter((entry) => entry !== '');
   const endPoint = `content/number/${urlPath[0]}`;
   const params = urlPath[1];
-  const query = location.search;
+  const { category } = parseQueryStringToObj(location.search);
+  const query = createQueryStringByObj({ category });
   return await api.get({ endPoint, params, query });
 };
 
@@ -583,7 +589,8 @@ const getContentsAndPage = async () => {
   const urlPath = location.pathname.split('/').filter((entry) => entry !== '');
   const endPoint = `content/${urlPath[0]}`;
   const params = urlPath[1];
-  const query = location.search;
+  const { category, page } = parseQueryStringToObj(location.search);
+  const query = createQueryStringByObj({ category, page });
   return await api.get({
     endPoint,
     params,
@@ -625,7 +632,8 @@ const getArticle = ({ content }) => {
 const getCommentsAndCommentPage = async () => {
   const urlPath = location.pathname.split('/').filter((entry) => entry !== '');
   const contentUrl = urlPath[2];
-  const query = location.search;
+  const { cp } = parseQueryStringToObj(location.search);
+  const query = createQueryStringByObj({ cp });
   return await api.get({
     endPoint: 'comment/content',
     params: contentUrl,
