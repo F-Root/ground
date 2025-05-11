@@ -160,4 +160,37 @@ function debounce(fn, wait = 300, options = {}) {
   return debounced;
 }
 
-export { RegEx, isEmpty, isNull, buildRegex, generateRandomNumber, debounce };
+// 쿼리 스트링 분리 함수 (리턴값은 객체)
+function parseQueryStringToObj(queryString) {
+  const urlParams = new URLSearchParams(queryString);
+
+  //객체에 저장
+  const queryObj = {};
+  for (const [key, value] of urlParams.entries()) {
+    queryObj[key] = value;
+  }
+
+  return queryObj;
+}
+
+// 전달 받은 쿼리 스트링 객체로 최종 쿼리 스트링을 제작해주는 함수
+function createQueryStringByObj(queryStringObj) {
+  // 값이 없는 속성 필터링
+  const queries = Object.entries(queryStringObj).filter(
+    ([key, value]) => !isNull(value)
+  );
+  // 필터링 된 데이터를 이용해 최종 쿼리 생성
+  const finalQuery = new URLSearchParams([...queries]).toString();
+  return finalQuery ? `?${finalQuery}` : finalQuery;
+}
+
+export {
+  RegEx,
+  isEmpty,
+  isNull,
+  buildRegex,
+  generateRandomNumber,
+  debounce,
+  parseQueryStringToObj,
+  createQueryStringByObj,
+};

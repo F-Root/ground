@@ -5,7 +5,11 @@ import * as api from '../../../public/api.js';
 import showErrorModal from '../../../components/common/ErrorModal.js';
 import ErrorPage from '../../../components/common/errorPage.js';
 import { icons } from '../../../public/icons.js';
-import { isNull } from '../../../public/util.js';
+import {
+  isNull,
+  parseQueryStringToObj,
+  createQueryStringByObj,
+} from '../../../public/util.js';
 
 export default class BoardWrapper extends Content {
   mounted() {
@@ -234,7 +238,8 @@ const getNumberOfContents = async () => {
   const urlPath = location.pathname.split('/').filter((entry) => entry !== '');
   const endPoint = `content/number/${urlPath[0]}`;
   const params = urlPath[1];
-  const query = location.search;
+  const { category } = parseQueryStringToObj(location.search);
+  const query = createQueryStringByObj({ category });
   return await api.get({ endPoint, params, query });
 };
 
@@ -242,7 +247,8 @@ const getContentsAndPage = async () => {
   const urlPath = location.pathname.split('/').filter((entry) => entry !== '');
   const endPoint = `content/${urlPath[0]}`;
   const params = urlPath[1];
-  const query = location.search;
+  const { category, page } = parseQueryStringToObj(location.search);
+  const query = createQueryStringByObj({ category, page });
   return await api.get({
     endPoint,
     params,
