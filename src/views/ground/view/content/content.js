@@ -632,7 +632,8 @@ const getArticle = ({ content }) => {
 const getCommentsAndCommentPage = async () => {
   const urlPath = location.pathname.split('/').filter((entry) => entry !== '');
   const contentUrl = urlPath[2];
-  const query = location.search;
+  const { cp } = parseQueryStringToObj(location.search);
+  const query = createQueryStringByObj({ cp });
   return await api.get({
     endPoint: 'comment/content',
     params: contentUrl,
