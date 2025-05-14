@@ -6,7 +6,7 @@ const entries = {
   signin: './src/views/signin/signin.js',
   signup: './src/views/signup/signup.js',
   'ground.board': './src/views/ground/board/board.js',
-  'ground.view': './src/views/ground/view/view.js',
+  // 'ground.view': './src/views/ground/view/view.js',
   'ground.create': './src/views/ground/create/create.js',
   'ground.update': './src/views/ground/update/update.js',
   'settings.profile': './src/views/settings/profile/profile.js',
@@ -16,6 +16,7 @@ const entries = {
   'settings.notificate': './src/views/settings/notificate/notificate.js',
   'post.new': './src/views/post/new/new.js',
   'post.update': './src/views/post/update/update.js',
+  'post.view': './src/views/post/view/view.js',
 };
 
 module.exports = {
@@ -140,6 +141,11 @@ module.exports = {
     //   filename: 'post.update.html',
     //   template: './src/views/post/update/update.html',
     //   chunks: ['post.update'],
+    // }),
+    // new HtmlWebpackPlugin({
+    //   filename: 'post.view.html',
+    //   template: './src/views/post/view/view.html',
+    //   chunks: ['post.view'],
     // }),
   ],
   optimization: {

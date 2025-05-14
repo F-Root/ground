@@ -1,7 +1,7 @@
 import Component from '../../components/core/Component.js';
 import Header from '../../components/header/header.js';
 import Footer from '../../components/footer/footer.js';
-import BoardWrapper from './content/content.js';
+import ViewWrapper from './content/content.js';
 
 export default class App extends Component {
   template() {
@@ -17,7 +17,7 @@ export default class App extends Component {
     const $footer = this.$target.querySelector('[data-component="footer"]');
 
     new Header($header);
-    new BoardWrapper($content);
+    new ViewWrapper($content);
     new Footer($footer);
   }
 }

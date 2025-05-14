@@ -110,7 +110,8 @@ viewsRouterWebpack.use(
   '/ground/:ground/:id',
   tokenCheck,
   signInCheck,
-  serveStatic('/ground/view', 'ground.view', setHeadersDisableCache)
+  // serveStatic('/ground/view', 'ground.view', setHeadersDisableCache)
+  serveStatic('/post/view', 'post.view', setHeadersDisableCache)
 );
 
 export { viewsRouterWebpack };

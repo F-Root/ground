@@ -110,7 +110,7 @@ commentRouter.get(
           cp,
           commentCount,
         });
-      res.status(201).json({
+      res.status(200).json({
         comments,
         commentPage,
         commentCount,

@@ -11,7 +11,10 @@ const addComment = Joi.object({
 });
 
 const contentsUrl = Joi.object({
-  contents: Joi.array(),
+  contents: Joi.array()
+    .items(Joi.string().pattern(/^\d{10}$/))
+    .unique()
+    .required(),
 });
 
 const commentPage = Joi.object({
