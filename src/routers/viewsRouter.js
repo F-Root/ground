@@ -98,7 +98,8 @@ viewsRouter.use(
 );
 viewsRouter.use(
   '/ground/:ground/:id',
-  serveStatic('/ground/view', 'view', setHeadersDisableCache)
+  // serveStatic('/ground/view', 'view', setHeadersDisableCache)
+  serveStatic('/post/view', 'view', setHeadersDisableCache)
 );
 
 export { viewsRouter };
